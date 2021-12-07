@@ -9,6 +9,11 @@ class AdminsController < ApplicationController
   def set_admin
       @admin = Admin.find(params[:id])
   end
+
+  def delete
+    redirect_to index
+  end
+
   
   def admin_params
       params.require(:admin).permit(:email, :username, :fullname, :password)
