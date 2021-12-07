@@ -1,2 +1,10 @@
 %h1 Home#index
 %p Find me in app/views/home/index.html.haml
+
+%ul
+  %li 
+    =link_to 'Log In', new_admin_session_path
+  %li 
+    =link_to 'Sign up', new_admin_registration_path
+  %li 
+    =link_to 'All Admins', admins_path    
