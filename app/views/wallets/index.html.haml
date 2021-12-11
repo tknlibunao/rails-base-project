@@ -12,9 +12,9 @@
       - @wallets.each do |wallet|
         %tr
           %td{"data-label" => "Buyer ID"}
-            = wallet.first_name
+            = wallet.buyer_id
           %td{"data-label" => "Actual Balance"}
-            = wallet.last_name
+            = wallet.actual_balance
 
           %td{"data-label" => "Actions"}  
             = link_to 'Show', wallet_path(wallet.id)

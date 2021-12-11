@@ -1,0 +1,16 @@
+%table
+  %thead
+    %tr
+      %th Buyer ID 
+      %th Actual Balance
+
+  %tbody
+    %tr
+      %td{"data-label" => "Buyer ID"}
+        = @wallet.buyer_id
+      %td{"data-label" => "Actual Balance"}
+        = @wallet.actual_balance  
+      %td{"data-label" => "Actions"} 
+        = link_to "Edit", edit_wallet_path(@wallet.id)
+%br
+= link_to "Back to Wallets", wallets_path
