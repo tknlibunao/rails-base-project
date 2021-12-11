@@ -27,7 +27,7 @@ class WalletsController < ApplicationController
     end
 
     def edit
-        @wallet = wallet.find(params[:id])
+        @wallet = Wallet.find(params[:id])
     end
 
     def update
@@ -47,7 +47,7 @@ class WalletsController < ApplicationController
     private
 
     def set_wallet
-        @wallet = wallet.find(params[:id])
+        @wallet = Wallet.find(params[:id])
     end
 
     def wallet_params
