@@ -17,10 +17,13 @@
   = f.text_area :address
 
   %br/
+  = f.label :verified
 
-  = f.label :verified, "Yes", :value => 'true'
-  = f.label :verified, "No", :value => 'false'
-
+  = f.radio_button :verified, "Yes", :value => 'true'
+  = f.label "Yes"  
+  = f.radio_button :verified, "No", :value => 'false'
+  = f.label "No"
+  
   %br/
   = f.label :verified_at
   = f.date_field :verified_at
@@ -33,7 +36,7 @@
   %br/
 
   = f.label :admin_id
-  = f.integer :admin_id
+  = f.number_field :admin_id
 
   %br/
   %br/
