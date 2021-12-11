@@ -51,6 +51,6 @@ class AdminsController < ApplicationController
     end
 
     def admin_params
-        params.require(:admin).permit(:username, :email, :fullname, :password)
+        params.require(:admin).permit(:first_name, :last_name, :contact_number, :address)
     end
 end
