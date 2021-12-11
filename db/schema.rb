@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_12_11_182434) do
   end
 
   create_table "wallets", force: :cascade do |t|
-    t.integer "wallet_id"
+    t.integer "buyer_id"
     t.decimal "actual_balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
