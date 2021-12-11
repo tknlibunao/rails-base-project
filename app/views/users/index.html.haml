@@ -2,13 +2,11 @@
 
 %table
   %thead
-    %tr
-      %th Full Name
+    %tr   
       %th Username
       %th Email
   %tbody
     -@users.each do |user|
       %tr
-        %td= user.fullname
         %td= user.username
         %td= user.email
