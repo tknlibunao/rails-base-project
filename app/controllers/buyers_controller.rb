@@ -1,4 +1,4 @@
-class BuyerController < ApplicationController
+class BuyersController < ApplicationController
     before_action :set_buyer, only: [:edit, :update, :destroy, :show]
 
     def index
