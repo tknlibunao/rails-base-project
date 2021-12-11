@@ -1,3 +1,3 @@
 class Wallet < ApplicationRecord
-    validates :first_name, :last_name, :contact_number, :address, presence: true
+    validates :buyer_id, :actual_balance, presence: true
 end
