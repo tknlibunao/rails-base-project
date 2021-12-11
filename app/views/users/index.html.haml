@@ -1,0 +1,14 @@
+%h1 Users#index
+
+%table
+  %thead
+    %tr
+      %th Full Name
+      %th Username
+      %th Email
+  %tbody
+    -@users.each do |user|
+      %tr
+        %td= user.fullname
+        %td= user.username
+        %td= user.email
