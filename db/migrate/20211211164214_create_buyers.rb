@@ -5,8 +5,8 @@ class CreateBuyers < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.integer :contact_number
       t.text :address
-      t.boolean :verified
-      t.boolean :verified_at
+      t.boolean :verified, :default => false
+      t.datetime :verified_at
       t.string :created_by
       t.integer :admin_id
 
