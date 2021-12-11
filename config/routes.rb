@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, :admins, :buyers
+  resources :users, :admins, :buyers, :wallets
   root to: "home#index"
 end
