@@ -1,0 +1,13 @@
+%table
+  %thead
+    %th Buyer Id
+    %th Action
+  %tbody
+    %tr
+      %td
+        = @portfolio.buyer_id
+      %td
+        = link_to 'Edit', edit_portfolio_path(@portfolio.id)
+
+%br
+= link_to 'Back to Portfolios', portfolios_path
