@@ -1,0 +1,26 @@
+= form_with model: @market do |f|
+  = f.label :stock_name
+  %br
+  = f.text_field :stock_name
+  %br
+  
+  = f.label :volume
+  %br
+  = f.number_field :volume, min: 0, step: :any
+  %br
+
+  = f.label :buying_price
+  %br
+  = f.number_field :buying_price, min: 0, step: :any
+  %br
+
+  = f.label :selling_price
+  %br
+  = f.number_field :selling_price, min: 0, step: :any
+  %br
+
+  %br
+  = f.submit
+
+%br
+= link_to 'Back to Markets', markets_path
