@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :portfolios
+  resources :markets
 
   root to: "home#index"
 end
