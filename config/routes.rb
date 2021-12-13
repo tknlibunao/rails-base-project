@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   }
 
   resources :users
+
+  resources :portfolios
+
   root to: "home#index"
 end
