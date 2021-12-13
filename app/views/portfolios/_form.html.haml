@@ -1,0 +1,11 @@
+= form_with model: @portfolio do |f|
+  = f.label :buyer_id
+  %br
+  = f.number_field :buyer_id, min: 0
+
+  %br
+  %br
+  = f.submit
+
+%br
+= link_to 'Back to Portfolios', portfolios_path
