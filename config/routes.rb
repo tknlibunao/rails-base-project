@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   resources :users, :admins, :buyers, :wallets, :portfolios, :markets
 
   root to: "home#index"
+
+  resources :admins do
+    resources :buyers
+  end
+
 end

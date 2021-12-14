@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true
 
-  has_one :admin, :buyer
+  has_one :admin
+  has_one :buyer
 
 end
