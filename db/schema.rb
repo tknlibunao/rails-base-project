@@ -12,6 +12,30 @@
 
 ActiveRecord::Schema.define(version: 2021_12_13_093025) do
 
+  create_table "admins", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "contact_number"
+    t.text "address"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "buyers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "contact_number"
+    t.text "address"
+    t.boolean "verified", default: false
+    t.datetime "verified_at"
+    t.string "created_by"
+    t.integer "admin_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "market_portfolios", force: :cascade do |t|
     t.integer "market_id", null: false
     t.integer "portfolio_id", null: false
@@ -49,6 +73,8 @@ ActiveRecord::Schema.define(version: 2021_12_13_093025) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.string "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
