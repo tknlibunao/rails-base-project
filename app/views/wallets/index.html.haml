@@ -1,0 +1,24 @@
+%h1 Stock Trading App
+
+%h2 Wallets
+
+.container
+  %table
+    %thead
+      %th Buyer ID
+      %th Actual Balance
+ 
+    %tbody
+      - @wallets.each do |wallet|
+        %tr
+          %td{"data-label" => "Buyer ID"}
+            = wallet.buyer_id
+          %td{"data-label" => "Actual Balance"}
+            = wallet.actual_balance
+
+          %td{"data-label" => "Actions"}  
+            = link_to 'Show', wallet_path(wallet.id)
+            = link_to "Edit", edit_wallet_path(wallet.id)
+            = link_to "Delete", wallet_path(wallet.id), method: :delete, data: {confirm: "Are you sure?"}
+%br/
+.p.sub-button=link_to "Add wallet", new_wallet_path
