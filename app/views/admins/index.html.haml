@@ -1,0 +1,28 @@
+%h1 Stock Trading App
+
+%h2 Admins
+
+.container
+  %table
+    %thead
+      %th First Name
+      %th Last Name
+      %th Contact Number
+      %th Address
+    %tbody
+      - @admins.each do |admin|
+        %tr
+          %td{"data-label" => "First Name"}
+            = admin.first_name
+          %td{"data-label" => "Last Name"}
+            = admin.last_name
+          %td{"data-label" => "Contact Number"}
+            = admin.contact_number
+          %td{"data-label" => "Address"}
+            = admin.address
+          %td{"data-label" => "Actions"}  
+            = link_to 'Show', admin_path(admin.id)
+            = link_to "Edit", edit_admin_path(admin.id)
+            = link_to "Delete", admin_path(admin.id), method: :delete, data: {confirm: "Are you sure?"}
+%br/
+.p.sub-button=link_to "Add Admin", new_admin_path
