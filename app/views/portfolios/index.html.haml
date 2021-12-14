@@ -1,0 +1,23 @@
+%h1 Stock Trading App
+
+%h2 Portfolios
+
+.container
+  %table
+    %thead
+      %th Buyer Id
+      %th Actions
+    %tbody
+      - @portfolios.each do |portfolio|
+        %tr
+          %td
+            = portfolio.buyer_id
+          %td
+            = link_to 'Show', portfolio_path(portfolio.id)
+            |
+            = link_to 'Edit', edit_portfolio_path(portfolio.id)
+            |
+            = link_to 'Delete', portfolio_path(portfolio.id), method: :delete, data: { confirm: 'Are you sure?' }
+
+.p.sub-button
+  = link_to 'Add Portfolio', new_portfolio_path

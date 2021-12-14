@@ -1,0 +1,12 @@
+%h1= @market.stock_name
+
+= link_to 'Edit', edit_market_path(@market.id)
+
+%br
+
+%p= "Volume: #{@market.volume}"
+%p= "Buying Price: $#{@market.buying_price}"
+%p= "Selling Price: $#{@market.selling_price}"
+
+%br
+= link_to 'Back to Markets', markets_path

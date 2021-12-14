@@ -10,6 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2021_12_13_075039) do
+
+  create_table "markets", force: :cascade do |t|
+    t.string "stock_name"
+    t.string "symbol"
+    t.decimal "volume"
+    t.integer "trades"
+    t.decimal "buying_price", precision: 8, scale: 2
+    t.decimal "selling_price", precision: 8, scale: 2
+
 ActiveRecord::Schema.define(version: 2021_12_11_182434) do
 
   create_table "admins", force: :cascade do |t|
@@ -21,6 +32,9 @@ ActiveRecord::Schema.define(version: 2021_12_11_182434) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "buyer_id"
   create_table "buyers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
