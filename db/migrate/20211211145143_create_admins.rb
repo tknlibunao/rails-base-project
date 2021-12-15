@@ -5,6 +5,7 @@ class CreateAdmins < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.integer :contact_number
       t.text :address
+      t.integer :user_id, foreign_key: true
 
       t.timestamps
     end
