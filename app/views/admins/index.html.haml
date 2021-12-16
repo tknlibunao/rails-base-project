@@ -1,6 +1,7 @@
 %h1 Stock Trading App
 
 %h2 Admins
+%p= "Welcome, #{current_user.username}!"
 
 .container
   %table
@@ -26,3 +27,4 @@
             = link_to "Delete", admin_path(admin.id), method: :delete, data: {confirm: "Are you sure?"}
 %br/
 .p.sub-button=link_to "Add Admin", new_admin_path
+.p.sub-button=link_to "Log Out", destroy_user_session_path, method: :delete
