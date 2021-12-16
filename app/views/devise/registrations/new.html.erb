@@ -14,6 +14,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :user_type %><br />
+    <%= f.select :user_type, ['Buyer', 'Admin']%>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
