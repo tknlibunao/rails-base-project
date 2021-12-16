@@ -1,4 +1,5 @@
 class BuyersController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_buyer, only: [:edit, :update, :destroy, :show]
 
     def index
