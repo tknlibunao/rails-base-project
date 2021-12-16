@@ -14,6 +14,13 @@
   </div>
 
   <div class="field">
+    <%= f.radio_button :type, 'Admin'%>
+    <%= label :type_admin, 'Admin'%> <br />
+    <%= f.radio_button :type, 'Buyer'%>
+    <%= label :type_buyer, 'Buyer'%> <br />
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
