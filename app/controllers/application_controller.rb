@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
       buyers_path
     end
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
+  end
 end
