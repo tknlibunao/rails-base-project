@@ -11,33 +11,27 @@
       %th Address
       %th Verified
       %th Verified at
-      %th Created by
-      %th Admin ID   
     %tbody
-      - @buyers.each do |buyer|
+      - @accounts.each do |account|
         %tr
           %td{"data-label" => "First Name"}
-            = buyer.first_name
+            = account.first_name
           %td{"data-label" => "Last Name"}
-            = buyer.last_name
+            = account.last_name
           %td{"data-label" => "Contact Number"}
-            = buyer.contact_number
+            = account.contact_number
           %td{"data-label" => "Address"}
-            = buyer.address
+            = account.address
           %td{"data-label" => "Verified"}
-            = buyer.verified
+            = account.verified
           %td{"data-label" => "Verified_at"}
-            = buyer.verified_at
-          %td{"data-label" => "Created by"}
-            = buyer.created_by
-          %td{"data-label" => "Admin ID"}
-            = buyer.admin_id
+            = account.verified_at
 
           %td{"data-label" => "Actions"}  
-            = link_to 'Show', buyer_path(buyer.id)
-            = link_to "Edit", edit_buyer_path(buyer.id)
-            = link_to "Delete", buyer_path(buyer.id), method: :delete, data: {confirm: "Are you sure?"}
+            = link_to 'Show', account_path(account.id)
+            = link_to "Edit", edit_account_path(account.id)
+            = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
 %br/
-.p.sub-button=link_to "Add buyer", new_buyer_path
+.p.sub-button=link_to "Add Account", new_account_path
 .p.sub-button=link_to "Log Out", destroy_user_session_path, method: :delete
 
