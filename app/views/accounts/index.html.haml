@@ -1,0 +1,38 @@
+%h1 Stock Trading App
+
+%h2 Accounts
+%p= "Welcome, #{current_user.username}!"
+
+.container
+  %table
+    %thead
+      %th First Name
+      %th Last Name
+      %th Contact Number
+      %th Address
+      %th Verified
+      %th Verified at   
+    %tbody
+      - @accounts.each do |account|
+        %tr
+          %td{"data-label" => "First Name"}
+            = account.first_name
+          %td{"data-label" => "Last Name"}
+            = account.last_name
+          %td{"data-label" => "Contact Number"}
+            = account.contact_number
+          %td{"data-label" => "Address"}
+            = account.address
+          %td{"data-label" => "Verified"}
+            = account.verified
+          %td{"data-label" => "Verified_at"}
+            = account.verified_at
+          
+          %td{"data-label" => "Actions"}  
+            = link_to 'Show', account_path(account.id)
+            = link_to "Edit", edit_account_path(account.id)
+            = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
+%br
+.p.sub-button=link_to "Add account", new_account_path
+.p.sub-button=link_to "Log Out", destroy_user_session_path, method: :delete
+
