@@ -1,4 +1,4 @@
-= form_with model: @buyer do |f|
+= form_with model: @account do |f|
   = f.label :first_name
   = f.text_field :first_name
   
@@ -28,15 +28,6 @@
   = f.label :verified_at
   = f.date_field :verified_at
 
-  %br/
-
-  = f.label :created_by
-  = f.text_field :created_by
-
-  %br/
-
-  = f.label :admin_id
-  = f.number_field :admin_id
 
   %br/
   %br/
@@ -46,4 +37,4 @@
   %br/
   %br/
   
-  = link_to "Back to Buyers", buyers_path
+  = link_to "Back to Accounts", accounts_path
