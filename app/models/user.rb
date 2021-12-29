@@ -6,8 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, :user_type, presence: true
 
-  has_one :admin
-  has_one :buyer
+  has_one :account
     
   def admin?
     has_role?(:admin)
