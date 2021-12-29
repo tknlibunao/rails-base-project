@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     #sessions: 'users/sessions'
     registrations: 'users/registrations'
   }
-  resources :users, :buyers, :wallets, :portfolios, :markets
+  resources :users, :accounts, :wallets, :portfolios, :markets
 
   root to: "home#index"
 
