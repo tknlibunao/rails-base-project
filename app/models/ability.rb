@@ -6,13 +6,9 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.buyer?
-      can :manage, Wallet
-      can :manage, Portfolio
-      can :manage, Market
+      can :manage, [Wallet, Portfolio, Market]
     elsif user.admin?
       can :manage, :all
-    else
-      can :read, :all
     end
 
     # Define abilities for the passed in user here. For example:
