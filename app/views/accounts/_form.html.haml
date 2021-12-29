@@ -1,0 +1,34 @@
+= form_with model: @account do |f|
+  = f.label :first_name
+  = f.text_field :first_name
+
+  %br
+  = f.label :last_name
+  = f.text_field :last_name
+
+  %br
+  = f.label :contact_number
+  = f.telephone_field :contact_number
+
+  %br
+  = f.label :address
+  = f.text_field :address
+
+  %br
+  = f.label :verified
+
+  = f.radio_button :verified, "Yes", :value => 'true'
+  = f.label "Yes"
+
+  = f.radio_button :verified, "No", :value => 'false'
+  = f.label "No"
+
+  %br
+  %br
+
+  = f.submit
+
+  %br
+  %br
+
+  = link_to "Back to Accounts", accounts_path
