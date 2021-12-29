@@ -1,2 +1,2 @@
-module BuyerHelper
+module AccountHelper
 end
