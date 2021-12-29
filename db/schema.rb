@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_12_16_021419) do
 
-  create_table "admins", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "contact_number"
-    t.text "address"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "buyers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
