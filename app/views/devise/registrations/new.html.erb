@@ -17,11 +17,11 @@
     <%= f.label :user_type %><br />
     <%= f.select :user_type, ['Buyer', 'Admin']%>
   </div>
-  
+
 <%# temporary - should we use UUID to generate unique account ids? %>
   <div class="field">
-    <%= f.label :account_id %><br />
-    <%= f.number_field :account_id%>
+    <%= f.label "Account id" %><br />
+    <%= f.number_field :account_id %>
   </div>
 
   <div class="field">
