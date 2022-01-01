@@ -33,5 +33,6 @@
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
 %br/
 .p.sub-button=link_to "Add Account", new_account_path
+.p.sub-button=link_to "Portfolio", portfolios_path
 .p.sub-button=link_to "Log Out", destroy_user_session_path, method: :delete
 
