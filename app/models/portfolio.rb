@@ -5,4 +5,6 @@ class Portfolio < ApplicationRecord
   has_many :markets, through: :market_portfolios
 
   accepts_nested_attributes_for :market_portfolios
+
+  belongs_to :account
 end
