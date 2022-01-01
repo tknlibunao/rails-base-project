@@ -5,19 +5,34 @@
 .container
   %table
     %thead
-      %th Buyer Id
+      %th Acount ID
       %th Actions
     %tbody
       - @portfolios.each do |portfolio|
         %tr
           %td
-            = portfolio.buyer_id
+            = portfolio.account_id
           %td
             = link_to 'Show', portfolio_path(portfolio.id)
             |
             = link_to 'Edit', edit_portfolio_path(portfolio.id)
             |
             = link_to 'Delete', portfolio_path(portfolio.id), method: :delete, data: { confirm: 'Are you sure?' }
-
+.container
+  %table
+    %thead
+      %th Acount ID
+      %th Actions
+    %tbody
+      - @portfolios.each do |portfolio|
+        %tr
+          %td
+            = portfolio.account_id
+          %td
+            = link_to 'Show', portfolio_path(portfolio.id)
+            |
+            = link_to 'Edit', edit_portfolio_path(portfolio.id)
+            |
+            = link_to 'Delete', portfolio_path(portfolio.id), method: :delete, data: { confirm: 'Are you sure?' }
 .p.sub-button
   = link_to 'Add Portfolio', new_portfolio_path
