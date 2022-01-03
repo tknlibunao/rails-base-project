@@ -6,15 +6,22 @@
 .container
   %table
     %thead
+      %th User Id
+      %th Email
       %th First Name
       %th Last Name
       %th Contact Number
       %th Address
+      %th User Type
       %th Verified
       %th Verified at   
     %tbody
       - @accounts.each do |account|
         %tr
+          %td{"data-label" => "User Id"}
+            = account.user.id
+          %td{"data-label" => "Email"}
+            = account.user.email
           %td{"data-label" => "First Name"}
             = account.first_name
           %td{"data-label" => "Last Name"}
@@ -23,6 +30,8 @@
             = account.contact_number
           %td{"data-label" => "Address"}
             = account.address
+          %td{"data-label" => "User Type"}
+            = account.user.user_type
           %td{"data-label" => "Verified"}
             = account.verified
           %td{"data-label" => "Verified_at"}
