@@ -2,8 +2,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.user_type == 'Admin'
       accounts_path
-    else
-      wallets_path
+    elsif resource.user_type == 'Buyer'
+      if resource.account.verified
+        account_path(:id => current_user.account.id)
+      else
+        wallets_path
+      end
     end
   end
 
