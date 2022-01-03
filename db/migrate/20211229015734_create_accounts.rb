@@ -8,7 +8,12 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       t.boolean :verified, :default => false
       t.datetime :verified_at
 
+      t.references :user
+      #t.integer :user_id, :foreign_key => true
+    
       t.timestamps
     end
+
+    #add_index :accounts, :user_id
   end
 end
