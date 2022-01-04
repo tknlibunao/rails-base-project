@@ -7,8 +7,7 @@ class Ability
     user ||= User.new
     if user.buyer?
       can :manage, [Wallet, Portfolio, Market]
-      # NOTE: might need to do CanCanCan with Account model and move this next line there
-      can :manage, Account, :id => user.account.id
+      can [:read, :update], Account, {:user_id => user.id, :verified => true}
     elsif user.admin?
       can :manage, :all
     end
