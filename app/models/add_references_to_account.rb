@@ -1,0 +1,2 @@
+class AddReferencesToAccount < ApplicationRecord
+end
