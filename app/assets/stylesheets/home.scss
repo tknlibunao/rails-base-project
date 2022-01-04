@@ -1,3 +1,81 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-header {
+  width: 100%;
+  height: 65px;
+  background-color: grey;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.nav-bar-link {
+  color: #fff;
+  text-align: right;
+  margin: 22px 30px;
+  text-transform: uppercase;
+}
+
+.nav-bar-link a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-bar-link a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-bar-link a:hover {
+  color: rgb(109, 66, 151);
+  text-decoration: none;
+}
+
+.nav-bar-button {
+  background-color: rebeccapurple;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 10px 30px;
+  margin-right: 120px;
+  border-radius: 8px;
+}
+
+.nav-bar-button:hover {
+  background-color: rgb(107, 74, 117);
+}
+
+.nav-bar-button a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-bar-button a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.welcome-text {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.welcome {
+  color: #4b4b4b;
+  font-size: 2.7em;
+}
+
+.welcome-sub {
+  color: grey;
+  font-size: 1.5em;
+}
