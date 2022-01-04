@@ -1,0 +1,59 @@
+.form-container {
+  background-color: grey;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 30px;
+  border-radius: 8px;
+  width: 350px;
+}
+
+.field {
+  padding-bottom: 10px;
+}
+
+.form-label {
+  color: white;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.actions {
+  background-color: rebeccapurple;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgb(211, 211, 211);
+}
+
+.form-field {
+  width: 90%;
+  padding: 6px 15px;
+}
+
+.form-errors {
+  width: 28%;
+  left: 50%;
+  bottom: 0;
+  position: fixed;
+  font-size: xx-small;
+  height: 80px;
+  transform: translate(-50%, 0);
+}
