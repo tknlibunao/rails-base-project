@@ -6,4 +6,5 @@ class Account < ApplicationRecord
   
   has_one :wallet
   has_one :portfolio
+  
 end

@@ -36,12 +36,12 @@
             = account.verified
           %td{"data-label" => "Verified_at"}
             = account.verified_at
-          
           %td{"data-label" => "Actions"}  
             = link_to 'Show', account_path(account.id)
             = link_to "Edit", edit_account_path(account.id)
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
 %br
 .p.sub-button=link_to "Add account", new_account_path
+
 .p.sub-button=link_to "Log Out", destroy_user_session_path, method: :delete
 

@@ -1,0 +1,2 @@
+class RemoveAccountIdColumn < ApplicationRecord
+end

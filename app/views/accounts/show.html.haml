@@ -21,9 +21,7 @@
         = @account.verified
       %td{"data-label" => "Verified at"}
         = @account.verified_at
-
       %td{"data-label" => "Actions"}
         = link_to "Edit", edit_account_path(@account.id)
 %br
 = link_to "Back to Accounts", accounts_path
-
