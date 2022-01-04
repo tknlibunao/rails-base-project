@@ -4,3 +4,4 @@ class CreateAddReferencesToAccounts < ActiveRecord::Migration[6.0]
       t.references :user
     end
 end
+end
