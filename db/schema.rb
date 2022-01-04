@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_113944) do
+ActiveRecord::Schema.define(version: 2021_12_29_015734) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2022_01_04_113944) do
     t.text "address"
     t.boolean "verified", default: false
     t.datetime "verified_at"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "market_portfolios", force: :cascade do |t|
@@ -52,9 +54,19 @@ ActiveRecord::Schema.define(version: 2022_01_04_113944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
   create_table "remove_account_id_columns", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,6 +82,14 @@ ActiveRecord::Schema.define(version: 2022_01_04_113944) do
     t.integer "account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   create_table "wallets", force: :cascade do |t|

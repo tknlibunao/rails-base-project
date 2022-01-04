@@ -1,4 +1,6 @@
 class WalletsController < ApplicationController
+    load_and_authorize_resource  
+
     before_action :authenticate_user!
     before_action :set_wallet, only: [:edit, :update, :destroy, :show]
 
@@ -17,6 +19,7 @@ class WalletsController < ApplicationController
 
     def create
         @wallet = Wallet.new(wallet_params)
+        #@wallet.user_id = current_user.id
 
         if @wallet.save
             flash[:notice] = "A new wallet has been added"

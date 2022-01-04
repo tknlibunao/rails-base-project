@@ -1,57 +1,65 @@
 class AccountsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_account, only: [:edit, :update, :destroy, :show]
+  load_and_authorize_resource
 
-    def index
-        @accounts = Account.all
+  before_action :authenticate_user!
+  before_action :set_account, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @accounts = Account.all
+  end
+
+  # def new
+  #   @account = Account.new
+  # end
+
+  def show
+  end
+
+  def create
+    # @account = Account.new(account_params)
+   
+    @account = @user.account.build(account_params)
+    
+    if @account.save
+      redirect_to account_path(@account), notice: 'An account was successfully created'
+    else
+      render user_session_path, error: 'Account cannot be created due to some errors'
     end
+  end
 
-    def new
-        @account = Account.new
+  def edit
+  end
+
+  def update
+    if @account.update(account_params)
+      redirect_to account_path(@account), notice: 'Account successfully updated'
+    else
+      render :edit, error: 'Account cannot be updated due to some errors'
     end
+  end
 
-    def show
-        @account = Account.find(params[:id])
-        
+  def destroy
+    @account.destroy
+
+    redirect_to accounts_path, notice: 'Account successfully destroyed'
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+  
+  def set_account
+    begin
+      @account = Account.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to user_session_path
+      p 'Redirected to sign in'
     end
+  end
 
-    def create
-        @account = Account.new(account_params)
-
-        if @account.save
-            flash[:notice] = "A new account has been added"
-            redirect_to accounts_path
-        else
-            flash[:error] = "There are some errors encountered"
-            render :new
-        end
-    end
-
-    def edit
-        @account = Account.find(params[:id])
-    end
-
-    def update
-
-        if @account.update(account_params)
-            redirect_to accounts_path
-        else
-            render :edit
-        end
-    end
-
-    def destroy
-        @account.destroy
-        redirect_to accounts_path, notice: "The account was successfully deleted"
-    end
-
-    private
-
-    def set_account
-        @account = Account.find(params[:id])
-    end
-
-    def account_params
-        params.require(:account).permit(:first_name, :last_name, :contact_number, :address, :verified, :verified_at)
-    end
+  def account_params
+    params.require(:account).permit(:first_name, :last_name, :contact_number, :address, :verified, :verified_at)
+  end
 end
