@@ -8,6 +8,7 @@ class Ability
     if user.buyer?
       can :manage, [Wallet, Portfolio, Market]
       can [:read, :update], Account, {:user_id => user.id, :verified => true}
+      cannot :manage, Account, {:verified => false}
     elsif user.admin?
       can :manage, :all
     end
