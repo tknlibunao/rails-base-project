@@ -61,3 +61,26 @@
 .login-prompt {
   color: #fff;
 }
+
+.login-link {
+  color: #fff;
+  text-align: left;
+  display: inline-block;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+
+.login-link a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-link a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  color: rgb(109, 66, 151);
+  text-decoration: none;
+}

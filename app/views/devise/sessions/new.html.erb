@@ -1,5 +1,5 @@
 <div class="main-header">
-  <span class="nav-bar-link"><%= render "devise/shared/links"%></span>
+  
 </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -34,6 +34,7 @@
       <p class="login-prompt"><%= notice %></p>
   </div>
 <% end %>
+<p class="login-link"><%= render "devise/shared/links"%></p>
   </div>
 
 <% end %>
