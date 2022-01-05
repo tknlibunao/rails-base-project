@@ -46,3 +46,14 @@
             = link_to 'Show', account_path(account.id)
             = link_to "Edit", edit_account_path(account.id)
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
+
+-else
+  .div.main-header 
+    .span.nav-bar-link
+      = link_to 'Log In', new_user_session_path
+    .span.nav-bar-button
+      = link_to 'Sign Up', new_user_registration_path
+
+  .div.welcome-text
+    %h1.welcome Trade with confidence on the world's leading social trading platform
+    %p.welcome-sub Join millions who've already discovered smarter investing in multiple types of assets            
