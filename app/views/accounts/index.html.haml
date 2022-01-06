@@ -8,6 +8,8 @@
     %thead
       %th User Id
       %th Email
+      %th Wallet Id
+      %th Actual Balance
       %th First Name
       %th Last Name
       %th Contact Number
@@ -22,6 +24,16 @@
             = account.user.id
           %td{"data-label" => "Email"}
             = account.user.email
+          %td{"data-label" => "Wallet Id"}
+            - if account.user.user_type == 'Buyer'
+              = account.wallet.id
+            - else
+              = '-admin-'
+          %td{"data-label" => "Actual Balance"}
+            - if account.user.user_type == 'Buyer'
+              = account.wallet.actual_balance
+            - else
+              = '-admin-'
           %td{"data-label" => "First Name"}
             = account.first_name
           %td{"data-label" => "Last Name"}
