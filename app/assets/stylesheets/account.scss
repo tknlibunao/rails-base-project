@@ -61,3 +61,35 @@
   vertical-align: middle;
   font-size: smaller;
 }
+
+.create-account-button {
+  background-color: rebeccapurple;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  border-style: none;
+  width: 350px;
+  cursor: pointer;
+  position: relative;
+  top: 690px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.create-account-button a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.create-account-button a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.create-account-button a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
