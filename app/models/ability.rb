@@ -11,6 +11,7 @@ class Ability
       can [:read, :update], Account, {:user_id => user.id, :verified => true}
 
       cannot :manage, Account, {:verified => false}
+      cannot :update, Wallet
     elsif user.admin?
       can :manage, :all
     end
