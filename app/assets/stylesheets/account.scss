@@ -4,7 +4,7 @@
 .account-welcome-container {
   margin-left: 40px;
   position: fixed;
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 .account-header {
@@ -62,7 +62,7 @@
   font-size: smaller;
 }
 
-.create-account-button {
+.account-button {
   background-color: rebeccapurple;
   color: #fff;
   text-transform: uppercase;
@@ -79,17 +79,17 @@
   transform: translate(-50%, -50%);
 }
 
-.create-account-button a:link {
+.account-button a:link {
   color: #fff;
   text-decoration: none;
 }
 
-.create-account-button a:visited {
+.account-button a:visited {
   color: #fff;
   text-decoration: none;
 }
 
-.create-account-button a:hover {
+.account-button a:hover {
   color: rgb(255, 255, 255);
   text-decoration: underline;
 }

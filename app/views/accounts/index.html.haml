@@ -46,8 +46,7 @@
             = link_to 'Show', account_path(account.id)
             = link_to "Edit", edit_account_path(account.id)
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
-
-  .div.create-account-button 
+  .div.account-button
     =link_to "Add New User", new_user_registration_path
 
 -else

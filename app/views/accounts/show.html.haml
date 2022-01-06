@@ -9,11 +9,12 @@
 .div.account-welcome-container
   %h1.account-header= "#{@account.first_name} #{@account.last_name}"
   %p.account-sub Account details
-
   %p.account-detail="First Name: #{@account.first_name}"
   %p.account-detail="Last Name: #{@account.last_name}"
   %p.account-detail="Contact Number: #{@account.contact_number}"
   %p.account-detail="Address: #{@account.address}"
   %p.account-detail="Verification Status: #{@account.verified}"
   %p.account-detail="Verification Date: #{@account.verified_at}"
+  
+.div.account-button
   = link_to "Edit Account Details", edit_account_path(@account.id)
