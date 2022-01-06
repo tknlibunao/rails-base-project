@@ -6,8 +6,10 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.buyer?
-      can :manage, [Wallet, Portfolio, Market]
+      can :manage, [Portfolio, Market]
+      can :read, Wallet, {:account_id => user.account.id}
       can [:read, :update], Account, {:user_id => user.id, :verified => true}
+
       cannot :manage, Account, {:verified => false}
     elsif user.admin?
       can :manage, :all
