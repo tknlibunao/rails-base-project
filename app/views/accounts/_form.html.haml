@@ -1,34 +1,30 @@
-= form_with model: @account do |f|
-  = f.label :first_name
-  = f.text_field :first_name
-
-  %br
-  = f.label :last_name
-  = f.text_field :last_name
-
-  %br
-  = f.label :contact_number
-  = f.telephone_field :contact_number
-
-  %br
-  = f.label :address
-  = f.text_field :address
-
-  %br
-  = f.label :verified
-
-  = f.radio_button :verified, "Yes", :value => 'true'
-  = f.label "Yes"
-
-  = f.radio_button :verified, "No", :value => 'false'
-  = f.label "No"
-
-  %br
-  %br
-
-  = f.submit
-
-  %br
-  %br
-
-  = link_to "Back to Accounts", accounts_path
+.div.form-container
+  = form_with model: @account do |f|
+    = f.label :first_name, :class => "form-label"
+    
+    = f.text_field :first_name, :class => "form-field"
+    %br
+    %br
+    = f.label :last_name, :class => "form-label"
+    = f.text_field :last_name, :class => "form-field"
+    %br
+    %br
+    = f.label :contact_number, :class => "form-label"
+    = f.telephone_field :contact_number, :class => "form-field"
+    %br
+    %br
+    = f.label :address, :class => "form-label"
+    = f.text_field :address, :class => "form-field"
+    %br
+    %br
+    = f.label :verified, :class => "form-label"
+    %br
+    = f.radio_button :verified, "Yes", :value => 'true'
+    = f.label "Yes", :class => "form-label"
+  
+    = f.radio_button :verified, "No", :value => 'false'
+    = f.label "No", :class => "form-label"
+    %br
+    %br
+    = f.submit
+    

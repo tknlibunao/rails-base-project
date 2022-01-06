@@ -1,3 +1,12 @@
-%h1 Edit Account Details
+.div.main-header 
+  .span.nav-bar-link
+    =link_to 'Home', root_path
+  .span.nav-bar-link
+    =link_to 'View All Accounts', accounts_path
+  .span.nav-bar-link
+    =link_to 'Log Out', destroy_user_session_path, method: :delete
+.div.account-welcome-container
+  %h1.account-header= "Hello, Admin #{current_user.username}!"
+  %p.account-sub= "Edit #{@account.first_name}'s details"   
 
 = render 'form' 
