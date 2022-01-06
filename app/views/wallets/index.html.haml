@@ -1,6 +1,17 @@
-%h1 Stock Trading App
+- if user_signed_in?
+  .div.main-header 
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-%h2 Wallets
+  .div.account-welcome-container
+    %h1.account-header= "Hello, #{current_user.username}!"
+    %p.account-sub You're almost ready to invest! Add funds to your wallet.
 
 .container
   %table
@@ -20,5 +31,5 @@
             = link_to 'Show', wallet_path(wallet.id)
             = link_to "Edit", edit_wallet_path(wallet.id)
             = link_to "Delete", wallet_path(wallet.id), method: :delete, data: {confirm: "Are you sure?"}
-%br/
-.p.sub-button=link_to "Add wallet", new_wallet_path
+  %br/
+  .p.sub-button=link_to "Add wallet", new_wallet_path
