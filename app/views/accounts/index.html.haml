@@ -43,7 +43,7 @@
           %td.account-header-6{"data-label" => "Verified_at"}
             = account.verified_at
           %td.account-header-10{"data-label" => "Actions"}  
-            = link_to 'Show', account_path(account.id)
+            = link_to "View", account_path(account.id)
             = link_to "Edit", edit_account_path(account.id)
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
   .div.account-button
