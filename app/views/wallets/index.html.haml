@@ -10,8 +10,9 @@
     %table
       %thead
         %th User Id
-        %th Email
         %th Account Id
+        %th Wallet Id
+        %th Email
         %th First Name
         %th Last Name
         %th Actual Balance
@@ -21,10 +22,12 @@
           %tr
             %td{"data-label" => "User Id"}
               = wallet.account.user.id
-            %td{"data-label" => "Email"}
-              = wallet.account.user.email
             %td{"data-label" => "Account Id"}
               = wallet.account_id
+            %td{"data-label" => "Wallet Id"}
+              = wallet.id
+            %td{"data-label" => "Email"}
+              = wallet.account.user.email
             %td{"data-label" => "First Name"}
               = wallet.account.first_name
             %td{"data-label" => "Last Name"}
