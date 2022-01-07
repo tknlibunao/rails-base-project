@@ -1,17 +1,20 @@
 - if user_signed_in?
   .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "100px" 
     .span.nav-bar-link
       =link_to 'View All Accounts', accounts_path
     .span.nav-bar-link
       =link_to 'Log Out', destroy_user_session_path, method: :delete
 
   .div.welcome-text
-    %h1.welcome Welcome to APP NAME!
-    %p.welcome-sub You're almost ready to invest.
-    %p.welcome-sub **update text & links for admin or buyer**
+    %h1.welcome Welcome to PenguInvest!
+    %p.welcome-sub You're one of the millions who've already discovered smarter investing in multiple types of assets
 
 -else
   .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px" 
     .span.nav-bar-link
       = link_to 'Log In', new_user_session_path
     .span.nav-bar-button
