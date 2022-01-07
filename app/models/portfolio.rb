@@ -1,6 +1,4 @@
 class Portfolio < ApplicationRecord
-  validates :account_id, presence: true
-
   belongs_to :account
 
   has_many :market_portfolios
