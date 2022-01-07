@@ -1,8 +1,7 @@
 class WalletsController < ApplicationController
-    load_and_authorize_resource  
-
     before_action :authenticate_user!
     before_action :set_wallet, only: [:edit, :update, :destroy, :show]
+    load_and_authorize_resource
 
     def index
         @wallets = Wallet.all
@@ -12,9 +11,7 @@ class WalletsController < ApplicationController
     #     @wallet = Wallet.new
     # end
 
-    def show
-        #@wallet = Wallet.find(params[:id])
-        
+    def show        
     end
 
     def create
@@ -32,7 +29,6 @@ class WalletsController < ApplicationController
     end
 
     def edit
-        # @wallet = Wallet.find(params[:id])
     end
 
     def update
@@ -52,7 +48,12 @@ class WalletsController < ApplicationController
     private
 
     def set_account
-      @account = Account.find(params[:account_id])
+      begin
+        @account = Account.find(params[:account_id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_url
+        p 'Redirected to home'
+      end
     end
 
     def set_wallet
