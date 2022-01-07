@@ -1,8 +1,7 @@
 class AccountsController < ApplicationController
-  load_and_authorize_resource
-
   before_action :authenticate_user!
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:show, :edit, :update, :destroy] 
+  load_and_authorize_resource
 
   def index
     @accounts = Account.all
@@ -54,7 +53,7 @@ class AccountsController < ApplicationController
     begin
       @account = Account.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_to user_session_path
+      redirect_to accounts_path, notice: 'Sorry, page not found'
       p 'Redirected to sign in'
     end
   end
