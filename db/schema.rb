@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_114333) do
+ActiveRecord::Schema.define(version: 2022_01_07_081113) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name"
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(version: 2022_01_06_114333) do
   end
 
   create_table "portfolios", force: :cascade do |t|
-    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id", null: false
+    t.index ["account_id"], name: "index_portfolios_on_account_id"
   end
 
   create_table "remove_account_id_columns", force: :cascade do |t|
@@ -103,5 +104,6 @@ ActiveRecord::Schema.define(version: 2022_01_06_114333) do
 
   add_foreign_key "market_portfolios", "markets"
   add_foreign_key "market_portfolios", "portfolios"
+  add_foreign_key "portfolios", "accounts"
   add_foreign_key "wallets", "accounts"
 end
