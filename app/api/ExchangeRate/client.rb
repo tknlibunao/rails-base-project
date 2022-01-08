@@ -13,3 +13,4 @@ module ExchangeRate
 # rails c
 # ExchangeRate::Client.latest
 # ExchangeRate::Client.historical
+# Resource: https://exchangeratesapi.io/ - needs token
