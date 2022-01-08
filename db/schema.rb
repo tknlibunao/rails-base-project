@@ -10,30 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_16_021419) do
+ActiveRecord::Schema.define(version: 2022_01_07_081113) do
 
-  create_table "admins", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "contact_number"
-    t.text "address"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "buyers", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.integer "contact_number"
     t.text "address"
     t.boolean "verified", default: false
     t.datetime "verified_at"
-    t.string "created_by"
-    t.integer "admin_id"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "market_portfolios", force: :cascade do |t|
@@ -60,9 +49,26 @@ ActiveRecord::Schema.define(version: 2021_12_16_021419) do
   end
 
   create_table "portfolios", force: :cascade do |t|
-    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id", null: false
+    t.index ["account_id"], name: "index_portfolios_on_account_id"
+  end
+
+  create_table "remove_account_id_columns", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,17 +81,29 @@ ActiveRecord::Schema.define(version: 2021_12_16_021419) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "user_type"
+    t.integer "account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
+  end
+
   create_table "wallets", force: :cascade do |t|
-    t.integer "buyer_id"
     t.decimal "actual_balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id", null: false
+    t.index ["account_id"], name: "index_wallets_on_account_id"
   end
 
   add_foreign_key "market_portfolios", "markets"
   add_foreign_key "market_portfolios", "portfolios"
+  add_foreign_key "portfolios", "accounts"
+  add_foreign_key "wallets", "accounts"
 end
