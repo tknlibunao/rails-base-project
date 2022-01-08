@@ -16,14 +16,29 @@
 .container
   %table
     %thead
-      %th Buyer Id
+      %th User Id
+      %th Account Id
+      %th Portfolio Id
+      %th Email
+      %th First Name
+      %th Last Name
       %th Actions
     %tbody
       - @portfolios.each do |portfolio|
         %tr
-          %td
-            = portfolio.buyer_id
-          %td
+          %td{"data-label" => "User Id"}
+            = portfolio.account.user.id
+          %td{"data-label" => "Account Id"}
+            = portfolio.account_id
+          %td{"data-label" => "Portfolio Id"}
+            = portfolio.id
+          %td{"data-label" => "Email"}
+            = portfolio.account.user.email
+          %td{"data-label" => "First Name"}
+            = portfolio.account.user.first_name
+          %td{"data-label" => "Last Name"}
+            = portfolio.account.user.last_name
+          %td{"data-label" => "Actions"}
             = link_to 'Show', portfolio_path(portfolio.id)
             |
             = link_to 'Edit', edit_portfolio_path(portfolio.id)

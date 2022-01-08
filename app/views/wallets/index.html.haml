@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if user_signed_in? && current_user.user_type == "Buyer"
   .div.main-header 
     .span.nav-bar-link
       =link_to 'Home', root_path
@@ -9,27 +9,7 @@
     .span.nav-bar-link
       =link_to 'Log Out', destroy_user_session_path, method: :delete
 
+
   .div.account-welcome-container
     %h1.account-header= "Hello, #{current_user.username}!"
     %p.account-sub You're almost ready to invest! Add funds to your wallet.
-
-.container
-  %table
-    %thead
-      %th Buyer ID
-      %th Actual Balance
- 
-    %tbody
-      - @wallets.each do |wallet|
-        %tr
-          %td{"data-label" => "Buyer ID"}
-            = wallet.buyer_id
-          %td{"data-label" => "Actual Balance"}
-            = wallet.actual_balance
-
-          %td{"data-label" => "Actions"}  
-            = link_to 'Show', wallet_path(wallet.id)
-            = link_to "Edit", edit_wallet_path(wallet.id)
-            = link_to "Delete", wallet_path(wallet.id), method: :delete, data: {confirm: "Are you sure?"}
-  %br/
-  .p.sub-button=link_to "Add wallet", new_wallet_path

@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if user_signed_in? && current_user.user_type == "Admin"
   .div.main-header 
     .span.nav-bar-link
       =link_to 'Home', root_path
