@@ -1,6 +1,17 @@
-%h1 Stock Trading App
+- if user_signed_in?
+  .div.main-header 
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-%h2 Portfolios
+  .div.account-welcome-container
+    %h1.account-header= "Hello, #{current_user.username}!"
+    %p.account-sub Here's your portfolio.
 
 .container
   %table

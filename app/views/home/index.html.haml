@@ -1,15 +1,26 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+- if user_signed_in?
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "100px" 
+    .span.nav-bar-link
+      =link_to 'View All Accounts', accounts_path
+    .span.nav-bar-link
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-%ul
-  - if user_signed_in?
-    %li
-      =link_to 'All Users', users_path
-    %li 
-      =link_to 'Log Out', destroy_user_session_path, method: :delete  
-  -else
-    %li
-      =link_to 'User Log In', new_user_session_path
-    %li 
-      =link_to 'User Sign Up', new_user_registration_path
+  .div.welcome-text
+    %h1.welcome Welcome to PenguInvest!
+    %p.welcome-sub You're one of the millions who've already discovered smarter investing in multiple types of assets
+
+-else
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px" 
+    .span.nav-bar-link
+      = link_to 'Log In', new_user_session_path
+    .span.nav-bar-button
+      = link_to 'Sign Up', new_user_registration_path
+
+  .div.welcome-text
+    %h1.welcome Trade with confidence on the world's leading social trading platform
+    %p.welcome-sub Join millions who've already discovered smarter investing in multiple types of assets
 

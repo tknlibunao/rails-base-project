@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  margin: auto;
+  width: 100%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+// Brand colors
+
+$dark-blue: #023047;
+$light-blue: #219ebc;
+$lighter-blue: #8ecae6;
+$yellow: #ffb703;
+$orange: #fb8500;
+$dark-grey: #3d3d3d;
+$med-grey: #666666;
+$light-grey: rgb(172, 172, 172);
+$white: #ffffff;

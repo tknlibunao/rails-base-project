@@ -1,3 +1,95 @@
 // Place all the styles related to the Buyer controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.account-welcome-container {
+  margin-left: 40px;
+  position: fixed;
+  margin-top: 70px;
+}
+
+.account-header {
+  color: #4b4b4b;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+.account-sub {
+  color: grey;
+  font-size: 1.5em;
+}
+
+.all-accounts-container {
+  width: 90vw;
+  margin: 0;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.account-table-header {
+  background-color: grey;
+  color: #fff;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  vertical-align: middle;
+  text-transform: capitalize;
+  font-size: smaller;
+  text-align: center;
+}
+// column width
+.account-header-6 {
+  width: 6%;
+  text-align: center;
+  padding: 10px;
+}
+.account-header-10 {
+  width: 8%;
+  text-align: center;
+}
+.account-header-18 {
+  width: 10%;
+  text-align: center;
+}
+.account-table-column {
+  background-color: #dfdfdf;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: smaller;
+}
+
+.account-button {
+  background-color: rebeccapurple;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  border-style: none;
+  width: 350px;
+  cursor: pointer;
+  position: relative;
+  top: 690px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.account-button a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.account-button a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.account-button a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
