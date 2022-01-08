@@ -1,12 +1,18 @@
 %table
   %thead
-    %th Buyer Id
+    %th Account Id
+    %th Portfolio Id
+    %th Email
     %th Action
   %tbody
     %tr
-      %td
-        = @portfolio.buyer_id
-      %td
+      %td{"data-label" => "Account Id"}
+        = @portfolio.account_id
+      %td{"data-label" => "Portfolio Id"}
+        = @portfolio.id
+      %td{"data-label" => "Email"}
+        = @portfolio.account.user.email
+      %td{"data-label" => "Action"}
         = link_to 'Edit', edit_portfolio_path(@portfolio.id)
 
 %br
