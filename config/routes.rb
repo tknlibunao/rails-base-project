@@ -16,4 +16,11 @@ Rails.application.routes.draw do
     resources :portfolios
   end
 
+  # namespace :api do
+  #   get '/today/quote', to: 'quotes#index'
+  # end
+
+  scope module: 'api', path: 'separate_path', as: 'different_prefix'  do
+    get '/today/quote', to: 'quotes#index'
+  end
 end
