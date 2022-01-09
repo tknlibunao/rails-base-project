@@ -24,18 +24,18 @@
   width: 90vw;
   margin: 0;
   position: absolute;
-  top: 75%;
+  top: 82%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  padding-bottom: 45px;
 }
 
 .account-table-header {
-  background-color: grey;
-  color: #fff;
-  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  background-color: $dark-blue;
+  color: $lighter-grey;
   overflow: hidden;
   vertical-align: middle;
   text-transform: capitalize;
@@ -57,15 +57,14 @@
   text-align: center;
 }
 .account-table-column {
-  background-color: #dfdfdf;
-  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  background-color: $lighter-grey;
   overflow: hidden;
   vertical-align: middle;
   font-size: smaller;
 }
 
 .account-button {
-  background-color: rebeccapurple;
+  background-color: $yellow;
   color: #fff;
   text-transform: uppercase;
   padding: 12px 30px;
@@ -73,12 +72,12 @@
   vertical-align: middle;
   border-radius: 8px;
   border-style: none;
-  width: 350px;
+  width: 300px;
   cursor: pointer;
-  position: relative;
-  top: 690px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 230px;
+  right: 0;
+  margin-right: 70px;
 }
 
 .account-button a:link {
@@ -91,7 +90,7 @@
   text-decoration: none;
 }
 
-.account-button a:hover {
+.account-button:hover {
   color: rgb(255, 255, 255);
-  text-decoration: underline;
+  background-color: $orange;
 }
