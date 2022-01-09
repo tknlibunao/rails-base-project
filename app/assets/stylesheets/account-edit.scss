@@ -1,0 +1,17 @@
+@import "application";
+.account-edit-container {
+  margin-left: 70px;
+  position: absolute;
+  margin-top: 160px;
+}
+
+.account-header-edit {
+  color: $dark-grey;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+.account-sub-edit {
+  color: $med-grey;
+  font-size: 1.5em;
+}
