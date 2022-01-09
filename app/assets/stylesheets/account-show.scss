@@ -1,5 +1,54 @@
 @import "application";
+.account-show-container {
+  position: absolute;
+  margin: 150px 70px;
+  letter-spacing: 2px;
+}
+.account-show-header {
+  position: relative;
+  width: 80vw;
+  color: $dark-blue;
+  padding-top: 15px;
+}
 .account-detail {
   color: $dark-grey;
   padding: 8px 0;
+}
+.account-sub-show {
+  color: $orange;
+  font-size: 1.5em;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.account-button-show {
+  background-color: $yellow;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  border-style: none;
+  width: 300px;
+  cursor: pointer;
+  position: relative;
+  top: 90vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.account-button-show a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.account-button-show a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.account-button-show:hover {
+  color: rgb(255, 255, 255);
+  background-color: $orange;
 }

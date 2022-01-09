@@ -1,4 +1,6 @@
 .div.main-header 
+  .div.logo
+    =image_tag "logo/logo.png", width: "auto", height: "120px"
   .span.nav-bar-link
     =link_to 'Home', root_path
   .span.nav-bar-link
@@ -6,9 +8,9 @@
   .span.nav-bar-link
     =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-.div.account-welcome-container
-  %h1.account-header= "#{@account.first_name} #{@account.last_name}"
-  %p.account-sub Account details
+.div.account-show-container
+  %h1.account-show-header= "#{@account.first_name} #{@account.last_name}"
+  %p.account-sub-show Account details
   %p.account-detail="First Name: #{@account.first_name}"
   %p.account-detail="Last Name: #{@account.last_name}"
   %p.account-detail="Contact Number: #{@account.contact_number}"
@@ -16,5 +18,5 @@
   %p.account-detail="Verification Status: #{@account.verified}"
   %p.account-detail="Verification Date: #{@account.verified_at}"
   
-.div.account-button
+.div.account-button-show
   = link_to "Edit Account Details", edit_account_path(@account.id)
