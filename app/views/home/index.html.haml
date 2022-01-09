@@ -1,10 +1,31 @@
-- if user_signed_in?
+- if user_signed_in? && current_user.user_type == "Admin"
   .div.main-header-home
     .div.logo
       =image_tag "logo/logo.png", width: "auto", height: "120px" 
     .span.nav-bar-link-home
       =link_to 'View All Accounts', accounts_path
     .span.nav-bar-link-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
+
+  .div.welcome-text-home
+    %h1.welcome-home Welcome to PenguInvest!
+    %p.welcome-sub-home You're signed in as an admin and you can access and update all accounts
+  .div.main-footer
+    .span.footer-text Created by Thea Kaylee Libunao & Ria Almeda. © 2022. Disclaimer: This app is created for educational purposes only.
+
+- elsif user_signed_in? && current_user.user_type == "Buyer"
+  .div.main-header-home
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px" 
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Wallet', wallets_path
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
       =link_to 'Log Out', destroy_user_session_path, method: :delete
 
   .div.welcome-text-home
