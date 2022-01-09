@@ -4,19 +4,19 @@
 @import "application";
 
 .account-welcome-container {
-  margin-left: 40px;
-  position: fixed;
-  margin-top: 70px;
+  margin-left: 70px;
+  position: absolute;
+  margin-top: 160px;
 }
 
 .account-header {
-  color: #4b4b4b;
+  color: $dark-grey;
   font-size: 2em;
   text-transform: capitalize;
 }
 
 .account-sub {
-  color: grey;
+  color: $med-grey;
   font-size: 1.5em;
 }
 
@@ -24,7 +24,7 @@
   width: 90vw;
   margin: 0;
   position: absolute;
-  top: 55%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
