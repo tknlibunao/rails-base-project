@@ -1,0 +1,13 @@
+@import "application";
+
+.main-footer {
+  background-color: inherit;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 25px;
+  vertical-align: middle;
+  color: $med-grey;
+  font-size: smaller;
+}
