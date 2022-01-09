@@ -1,10 +1,10 @@
 @import "application";
 
 .form-container {
-  background-color: grey;
+  background-color: $light-grey;
   margin: 0;
   position: absolute;
-  top: 50%;
+  top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px 30px;
@@ -17,13 +17,13 @@
 }
 
 .form-label {
-  color: white;
+  color: $white;
   display: inline-block;
   padding-bottom: 10px;
 }
 
 .actions {
-  background-color: rebeccapurple;
+  background-color: $dark-blue;
   color: #fff;
   text-transform: uppercase;
   padding: 12px 30px;
@@ -35,6 +35,9 @@
   width: 100%;
   cursor: pointer;
 }
+.actions a:hover {
+  background-color: $orange;
+}
 
 .form-title {
   text-align: center;
@@ -42,7 +45,7 @@
   padding-bottom: 15px;
   text-transform: uppercase;
   font-weight: bold;
-  color: rgb(211, 211, 211);
+  color: $dark-grey;
 }
 
 .form-field {
@@ -65,7 +68,6 @@
 }
 
 .login-link {
-  color: #fff;
   text-align: left;
   display: inline-block;
   padding-top: 20px;
@@ -73,16 +75,16 @@
 }
 
 .login-link a:link {
-  color: #fff;
+  color: $white;
   text-decoration: none;
 }
 
 .login-link a:visited {
-  color: #fff;
+  color: $white;
   text-decoration: none;
 }
 
 .login-link a:hover {
-  color: rgb(109, 66, 151);
+  color: $dark-blue;
   text-decoration: none;
 }
