@@ -15,9 +15,15 @@
     =link_to 'Log Out', destroy_user_session_path, method: :delete 
     %br/  
     =link_to 'Home', root_path       
-- else 
-  %h1 Please sign in to continue
-  %li
-    =link_to 'User Log In', new_user_session_path
-  %li 
-    =link_to 'User Sign Up', new_user_registration_path
+-else
+  .div.main-header-home
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px" 
+    .span.nav-bar-link-home
+      = link_to 'Log In', new_user_session_path
+    .span.nav-bar-button-home
+      = link_to 'Sign Up', new_user_registration_path
+
+  .div.welcome-text-home
+    %h1.welcome-home Trade with confidence on the world's leading social trading platform
+    %p.welcome-sub-home Join millions who've already discovered smarter investing in multiple types of assets

@@ -22,6 +22,14 @@
   padding-bottom: 10px;
 }
 
+.form-alert {
+  color: $dark-grey;
+  font-size: smaller;
+  position: inherit;
+  padding-bottom: 13px;
+  display: inline-block;
+}
+
 .actions {
   background-color: $dark-blue;
   color: #fff;
@@ -54,17 +62,18 @@
 }
 
 .form-errors {
-  width: 28%;
-  left: 50%;
-  bottom: 0;
+  width: 30%;
+  left: 25%;
+  top: 50%;
   position: fixed;
   font-size: small;
   height: 100px;
   transform: translate(-50%, 0);
+  color: $med-grey;
 }
 
 .login-prompt {
-  color: #fff;
+  color: $dark-grey;
 }
 
 .login-link {
