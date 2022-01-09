@@ -1,7 +1,11 @@
 - if user_signed_in?
   .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
     .span.nav-bar-link
       =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Wallet', wallets_path
     .span.nav-bar-link
       =link_to 'Portfolio', portfolios_path
     .span.nav-bar-link
@@ -34,13 +38,13 @@
             = portfolio.id
           %td{"data-label" => "Email"}
             = portfolio.account.user.email
-          %td{"data-label" => "First Name"}
-            = portfolio.account.user.first_name
-          %td{"data-label" => "Last Name"}
-            = portfolio.account.user.last_name
+          -# %td{"data-label" => "First Name"}
+          -#   = portfolio.account.user.first_name
+          -# %td{"data-label" => "Last Name"}
+          -#   = portfolio.account.user.last_name
           %td{"data-label" => "Actions"}
             = link_to 'Show', portfolio_path(portfolio.id)
-            |
+            
             = link_to 'Edit', edit_portfolio_path(portfolio.id)
             |
             = link_to 'Delete', portfolio_path(portfolio.id), method: :delete, data: { confirm: 'Are you sure?' }
