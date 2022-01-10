@@ -38,10 +38,11 @@
             = portfolio.id
           %td{"data-label" => "Email"}
             = portfolio.account.user.email
-          -# %td{"data-label" => "First Name"}
-          -#   = portfolio.account.user.first_name
-          -# %td{"data-label" => "Last Name"}
-          -#   = portfolio.account.user.last_name
+          %td{"data-label" => "First Name"}
+            = portfolio.account.first_name
+          %td{"data-label" => "Last Name"}
+            = portfolio.account.last_name
+            
           %td{"data-label" => "Actions"}
             = link_to 'Show', portfolio_path(portfolio.id)
             

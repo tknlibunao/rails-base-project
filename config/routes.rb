@@ -3,6 +3,11 @@ Rails.application.routes.draw do
     #sessions: 'users/sessions'
     registrations: 'users/registrations'
   }
+
+  scope '/admin' do
+    resources :users
+  end
+
   resources :users, :accounts, :wallets, :portfolios, :markets
 
   root to: "home#index"
