@@ -6,7 +6,7 @@ ruby '3.0.2'
 
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
-# gem 'pg'
+gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -17,7 +17,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'hamlit-rails'
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'cancancan'
 gem 'rolify'
 
