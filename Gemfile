@@ -17,7 +17,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'hamlit-rails'
-#gem 'sqlite3'
 gem 'cancancan'
 gem 'rolify'
 
