@@ -1,7 +1,11 @@
 - if user_signed_in?
-  .div.main-header 
+  .div.main-header
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px" 
     .span.nav-bar-link
       =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Wallet', wallets_path
     .span.nav-bar-link
       =link_to 'Portfolio', portfolios_path
     .span.nav-bar-link
