@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :markets do
     resources :market_portfolios
+    resources :logs
   end
 
 end
