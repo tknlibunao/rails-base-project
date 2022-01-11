@@ -1,0 +1,36 @@
+= @market.id
+%br
+= @market.stock_name
+%br
+= "Buying Price: Php#{@market.buying_price}"
+%br
+= "Selling Price: Php#{@market.selling_price}"
+%br
+%br
+
+= form_for [@market, @log] do |f|
+  = f.hidden_field :market_id, value: @market.id
+  = f.hidden_field :portfolio_id, value: @portfolio.id
+  = f.hidden_field :kind, value: "Buy"
+
+  = f.label :price_bought
+  = f.number_field :price_bought
+
+  %br
+  %br
+
+  = f.submit "Buy"
+
+= form_for [@market, @log] do |f|
+  = f.hidden_field :market_id, value: @market.id
+  = f.hidden_field :portfolio_id, value: @portfolio.id
+  = f.hidden_field :kind, value: "Sell"
+
+  = f.label :volume_sold
+  = f.number_field :volume_sold
+
+  %br
+  %br
+
+  = f.submit "Sell"
+
