@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :users, :accounts, :wallets, :portfolios, :markets, :market_portfolios
+  resources :users, :accounts, :wallets, :portfolios, :markets, :logs
 
   root to: "home#index"
 
