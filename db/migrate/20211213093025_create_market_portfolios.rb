@@ -9,7 +9,7 @@ class CreateMarketPortfolios < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    #remove duplicate entries/instances for market_portfolio
-    add_index :market_portfolios, [:market_id, :portfolio_id], unique: true
+    # remove duplicate entries/instances for market_portfolio
+    # add_index :market_portfolios, [:market_id, :portfolio_id], unique: true
   end
 end
