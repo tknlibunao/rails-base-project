@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :users, :accounts, :wallets, :portfolios, :markets
+  resources :users, :accounts, :wallets, :portfolios, :markets, :market_portfolios
 
   root to: "home#index"
 
@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :wallets
     resources :portfolios
+  end
+
+  resources :markets do
+    resources :market_portfolios
   end
 
 end
