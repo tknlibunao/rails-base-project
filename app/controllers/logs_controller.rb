@@ -1,5 +1,11 @@
 class LogsController < ApplicationController
-  before_action :set_portfolio
+  before_action :set_portfolio, :set_logs
+
+  def index
+  end
+
+  def show
+  end
   
   def new
     @log = Log.new
@@ -23,6 +29,10 @@ class LogsController < ApplicationController
 
   def set_portfolio
     @portfolio = current_user.account.portfolio
+  end
+
+  def set_logs
+    @logs = Log.where(portfolio_id: @portfolio.id)
   end
 
   def log_params
