@@ -1,6 +1,8 @@
-= @portfolio.account_id
-%br
-= @portfolio.id
+-# = @portfolio.account_id
+-# %br
+-# = @portfolio.id
+-# %br
+= @market.id
 %br
 = @market.stock_name
 %br
@@ -17,6 +19,9 @@
     %ul
       - @market_portfolio.errors.full_messages.each do |msg|
         %li= msg
+  = f.hidden_field :market_id, value: @market.id
+  = f.hidden_field :portfolio_id, value: @portfolio.id
+  = f.hidden_field :transaction_type, value: "Buy"
 
   = f.label :price_bought
   = f.number_field :price_bought
@@ -24,4 +29,23 @@
   %br
   %br
 
-  = f.submit
+  = f.submit "Buy"
+
+= form_with model: @market_portfolio do |f|
+  - if @market_portfolio.errors.any?
+    %h2= "#{pluralize(@market_portfolio.errors.count, "error")} prohibited this market_portfolio from being saved:"
+
+    %ul
+      - @market_portfolio.errors.full_messages.each do |msg|
+        %li= msg
+  = f.hidden_field :market_id, value: @market.id
+  = f.hidden_field :portfolio_id, value: @portfolio.id
+  = f.hidden_field :transaction_type, value: "Sell"
+
+  = f.label :volume_sold
+  = f.number_field :volume_sold
+
+  %br
+  %br
+
+  = f.submit "Sell"
