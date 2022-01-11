@@ -1,13 +1,29 @@
+.div
+  %h1= "Wallet Balance: Php #{@wallet.actual_balance}"
+
 %table
   %thead
-    %th Buyer Id
+    %th Market Id
+    %th Stock Name
+    %th Kind
+    %th Price Bought
+    %th Volume Sold
     %th Action
   %tbody
-    %tr
-      %td
-        = @portfolio.buyer_id
-      %td
-        = link_to 'Edit', edit_portfolio_path(@portfolio.id)
+    - @logs.each do |log|
+      %tr
+        %td
+          = log.market_id
+        %td
+          = log.market.stock_name
+        %td
+          = log.kind
+        %td
+          = log.price_bought
+        %td
+          = log.volume_sold
+        %td
+          = link_to 'View', new_market_log_path(log.market_id)
 
 %br
 = link_to 'Back to Portfolios', portfolios_path
