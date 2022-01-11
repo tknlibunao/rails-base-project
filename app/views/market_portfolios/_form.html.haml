@@ -1,0 +1,27 @@
+= @portfolio.account_id
+%br
+= @portfolio.id
+%br
+= @market.stock_name
+%br
+= "Buying Price: PHP#{@market.buying_price}"
+%br
+= "Selling Price: PHP#{@market.selling_price}"
+%br
+%br
+
+= form_with model: @market_portfolio do |f|
+  - if @market_portfolio.errors.any?
+    %h2= "#{pluralize(@market_portfolio.errors.count, "error")} prohibited this market_portfolio from being saved:"
+
+    %ul
+      - @market_portfolio.errors.full_messages.each do |msg|
+        %li= msg
+
+  = f.label :price_bought
+  = f.number_field :price_bought
+
+  %br
+  %br
+
+  = f.submit
