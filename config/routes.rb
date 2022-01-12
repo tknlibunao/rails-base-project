@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   #   get '/today/quote', to: 'quotes#index'
   # end
 
+  namespace :api do
+    get '/latest/exchangerate', to: 'exchangerates#index'
+ end
+
   scope module: 'api', path: 'separate_path', as: 'different_prefix'  do
     get '/today/quote', to: 'quotes#index'
   end
