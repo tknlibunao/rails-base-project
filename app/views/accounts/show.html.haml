@@ -1,3 +1,13 @@
+.div.main-header 
+  .div.logo
+    =image_tag "logo/logo.png", width: "auto", height: "120px"
+  .span.nav-bar-link
+    =link_to 'Home', root_path
+  .span.nav-bar-link
+    =link_to 'View All Accounts', accounts_path
+  .span.nav-bar-link
+    =link_to 'Log Out', destroy_user_session_path, method: :delete
+
 .div.account-show-container
   %h1.account-show-header= "#{@account.first_name} #{@account.last_name}"
   %p.account-sub-show Account details
