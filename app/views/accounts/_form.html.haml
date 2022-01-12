@@ -17,15 +17,16 @@
     = f.text_field :address, :class => "form-field"
     %br
     %br
-    = f.label :verified, :class => "form-label"
-    %br
-    = f.radio_button :verified, "Yes", :value => 'true'
-    = f.label "Yes", :class => "form-label"
-  
-    = f.radio_button :verified, "No", :value => 'false'
-    = f.label "No", :class => "form-label"
-    %br
-    %br
+    - if current_user.user_type == "Admin"
+      = f.label :verified, :class => "form-label"
+      %br
+      = f.radio_button :verified, "Yes", :value => 'true'
+      = f.label "Yes", :class => "form-label"
+    
+      = f.radio_button :verified, "No", :value => 'false'
+      = f.label "No", :class => "form-label"
+      %br
+      %br
     
     = f.submit
     
