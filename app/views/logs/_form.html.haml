@@ -14,7 +14,7 @@
   = f.hidden_field :kind, value: "Buy"
 
   = f.label :price_bought
-  = f.number_field :price_bought
+  = f.number_field :price_bought, step: :any, min: 0.1
 
   %br
   %br
@@ -27,7 +27,7 @@
   = f.hidden_field :kind, value: "Sell"
 
   = f.label :volume_sold
-  = f.number_field :volume_sold
+  = f.number_field :volume_sold, step: :any, min: 0.1
 
   %br
   %br
