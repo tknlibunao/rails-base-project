@@ -1,4 +1,30 @@
 module LogsHelper
+  # TERMINOLOGY (attributes of Log and Market models)
+  #
+  # price_bought: USER INPUT in the BUY form
+  #             : amount of stocks (in $) the user wants to buy
+  #             : can be thought of as COST
+  #
+  # price_sold: DERIVED value (in $), i.e. volume_sold * selling_price
+  #           : can be thought of as REVENUE
+  #
+  # volume_bought: DERIVED value (in units), i.e. price_bought/buying_price
+  #
+  # volume_sold: USER INPUT in the SELL form
+  #            : amount of stocks (in units) the user wants to sell
+  #
+  # buying_price: market value (in $ per unit) of the stock if to be bought
+  #             : static as of the moment
+  #
+  # selling_price: market value (in $ per unit) of the stock if to be sold
+  #              : static as of the moment
+  #
+  # volume: amount of stocks (in units) available in the market
+  #
+  # trades: amount of stocks (in units) bought or sold
+  #
+  # kind: type of transaction made (either "Buy" or "Sell")
+  
   def generate_log_message(log)
     if log.kind == "Buy"
       units = compute_volume_bought(log.price_bought, log.market.buying_price)
