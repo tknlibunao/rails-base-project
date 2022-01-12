@@ -17,38 +17,29 @@
     .div.market-welcome-container
       %h1.market-header= "Hello, #{current_user.username}!"
       %p.market-sub Here's your portfolio.
+      %p.market-sub= "Wallet: $#{@wallet.actual_balance}"
 
     %table.all-markets-container
       %thead.market-table-header
-        %th.market-header-6 User Id
-        %th.market-header-6 Account Id
-        %th.market-header-6 Portfolio Id
-        %th.market-header-10 Email
-        %th.market-header-10 First Name
-        %th.market-header-10 Last Name
-        %th.market-header-10 Actions
+        %th.portfolio-header-10 Stock Name
+        %th.portfolio-header-6 Symbol
+        %th.portfolio-header-6 Owned Units
+        %th.portfolio-header-6 Revenue
+        %th.portfolio-header-6 Actions
       %tbody
-        - @portfolios.each do |portfolio|
+        - @logs.each do |log|
           %tr.market-table-column
-            %td.market-header-6{"data-label" => "User Id"}
-              = portfolio.account.user.id
-            %td.market-header-6{"data-label" => "Account Id"}
-              = portfolio.account_id
-            %td.market-header-6{"data-label" => "Portfolio Id"}
-              = portfolio.id
-            %td.market-header-10{"data-label" => "Email"}
-              = portfolio.account.user.email
-            %td.market-header-10{"data-label" => "First Name"}
-              = portfolio.account.first_name
-            %td.market-header-10{"data-label" => "Last Name"}
-              = portfolio.account.last_name
+            %td.portfolio-header-10{"data-label" => "Stock Name"}
+              = log.market.stock_name
+            %td.portfolio-header-6{"data-label" => "Symbol"}
+              = log.market.symbol
+            %td.portfolio-header-6{"data-label" => "Owned Units"}
+              = compute_units(log)
+            %td.portfolio-header-6{"data-label" => "Revenue"}
+              = compute_revenue(log)
               
-            %td.market-header-10{"data-label" => "Actions"}
-              = link_to 'Show', portfolio_path(portfolio.id)
-              
-              = link_to 'Edit', edit_portfolio_path(portfolio.id)
-              |
-              = link_to 'Delete', portfolio_path(portfolio.id), method: :delete, data: { confirm: 'Are you sure?' }
-
+            %td.portfolio-header-6{"data-label" => "Actions"}
+              = link_to 'View', new_market_log_path(log.market_id)
+  
   .p.sub-button
     = link_to 'Add Portfolio', new_portfolio_path
