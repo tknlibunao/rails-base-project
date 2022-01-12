@@ -1,4 +1,7 @@
 class LogsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+  
   def index
     @portfolio = current_user.account.portfolio
     @logs = Log.where(portfolio_id: @portfolio.id)
