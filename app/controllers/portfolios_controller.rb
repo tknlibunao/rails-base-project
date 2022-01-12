@@ -4,7 +4,11 @@ class PortfoliosController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @portfolios = Portfolio.all
+    # @portfolios = Portfolio.all
+    @portfolio = Portfolio.where(account_id: current_user.account.id)
+    @wallet = current_user.account.wallet
+    @logs = Log.where(portfolio_id: current_user.account.portfolio.id)
+    @unique_stocks = get_unique_stocks(@logs)
   end
 
   # def new
@@ -44,6 +48,10 @@ class PortfoliosController < ApplicationController
   end
 
   private
+
+  def get_unique_stocks(logs)
+    logs.uniq
+  end
 
   def set_account
     begin
