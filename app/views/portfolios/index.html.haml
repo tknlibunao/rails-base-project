@@ -27,7 +27,7 @@
         %th.portfolio-header-6 Revenue
         %th.portfolio-header-6 Actions
       %tbody
-        - @stocks.each do |stock|
+        - get_owned_stocks(@logs).each do |stock|
           %tr.market-table-column
             %td.portfolio-header-10{"data-label" => "Stock Name"}
               = stock[:stock_name]
