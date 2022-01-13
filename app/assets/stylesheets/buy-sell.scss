@@ -2,39 +2,44 @@
 
 .buy-container {
   top: 200px;
-  height: 100px;
+  right: 90px;
+  height: 110px;
   background-color: $light-blue;
   width: 25vw;
   margin: auto;
-  position: relative;
+  position: absolute;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 10px;
+  font-size: large;
 }
 
 .sell-container {
-  top: 200px;
-  height: 100px;
+  top: 350px;
+  right: 90px;
+  height: 110px;
   background-color: $orange;
   width: 25vw;
   margin: auto;
-  position: relative;
+  position: absolute;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 10px;
+  font-size: large;
 }
 
 .bs-error-container {
-  top: 200px;
+  top: 480px;
+  right: 90px;
   height: 100px;
   color: $dark-blue;
   width: 25vw;
   margin: auto;
-  position: relative;
+  position: absolute;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;

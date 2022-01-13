@@ -19,7 +19,9 @@
       %h1.market-header= "Hello, #{current_user.username}!"
       %p.account-sub-show Stock preview
       %p.market-sub
-        ="#{@market.stock_name} (#{@market.symbol})"
+        =@market.stock_name
+      %p.market-sub
+        ="(#{@market.symbol})"
       %p.market-sub
         ="Buying Price: $#{@market.buying_price}"
       %p.market-sub
