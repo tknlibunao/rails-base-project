@@ -17,8 +17,8 @@
 
     .div.market-welcome-container
       %h1.market-header= "Hello, #{current_user.username}!"
-      %p.market-sub Here's your portfolio.
-      %p.market-sub= "Wallet: $#{@wallet.actual_balance}"
+      %p.market-sub= "Wallet Balance: $#{@wallet.actual_balance}"
+      %p.account-sub-show portfolio preview
 
     %table.all-markets-container
       %thead.market-table-header
@@ -35,7 +35,7 @@
             %td.portfolio-header-6{"data-label" => "Symbol"}
               = stock[:symbol]
             %td.portfolio-header-6{"data-label" => "Owned Units"}
-              = stock[:units]
+              = "%.2f" % stock[:units]
             %td.portfolio-header-6{"data-label" => "Revenue"}
               = number_to_currency(stock[:revenue], precision: 2, delimiter: ",")
               
