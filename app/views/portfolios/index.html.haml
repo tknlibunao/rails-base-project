@@ -1,18 +1,19 @@
-.container
-  - if user_signed_in?
-    .div.main-header 
-      .div.logo
-        =image_tag "logo/logo.png", width: "auto", height: "120px"
-      .span.nav-bar-link
-        =link_to 'Home', root_path
-      .span.nav-bar-link
-        =link_to 'Wallet', wallets_path
-      .span.nav-bar-link
-        =link_to 'Portfolio', portfolios_path
-      .span.nav-bar-link
-        =link_to 'Market', markets_path
-      .span.nav-bar-link
-        =link_to 'Log Out', destroy_user_session_path, method: :delete
+- if user_signed_in?
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Profile', account_path(current_user.account.id)
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Logs', logs_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
     .div.market-welcome-container
       %h1.market-header= "Hello, #{current_user.username}!"
