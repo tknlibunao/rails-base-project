@@ -27,19 +27,19 @@
         %th.portfolio-header-6 Revenue
         %th.portfolio-header-6 Actions
       %tbody
-        - @logs.each do |log|
+        - @stocks.each do |stock|
           %tr.market-table-column
             %td.portfolio-header-10{"data-label" => "Stock Name"}
-              = log.market.stock_name
+              = stock[:stock_name]
             %td.portfolio-header-6{"data-label" => "Symbol"}
-              = log.market.symbol
+              = stock[:symbol]
             %td.portfolio-header-6{"data-label" => "Owned Units"}
-              = compute_units(log)
+              = stock[:units].round(5)
             %td.portfolio-header-6{"data-label" => "Revenue"}
-              = compute_revenue(log)
+              = number_to_currency(stock[:revenue], precision: 2, delimiter: ",")
               
             %td.portfolio-header-6{"data-label" => "Actions"}
-              = link_to 'View', new_market_log_path(log.market_id)
+              = link_to 'View', new_market_log_path(stock[:market_id])
   
   .p.sub-button
     = link_to 'Add Portfolio', new_portfolio_path
