@@ -9,8 +9,6 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.where(account_id: current_user.account.id)
     @wallet = current_user.account.wallet
     @logs = Log.where(portfolio_id: current_user.account.portfolio.id)
-    # @stocks = get_unique_stocks(@logs)
-    @stocks = get_owned_stocks(@logs)
   end
 
   # def new
@@ -50,31 +48,6 @@ class PortfoliosController < ApplicationController
   end
 
   private
-
-  def get_unique_stocks(logs)
-    stocks = logs.group(:market_id)
-  end
-
-  def get_owned_stocks(logs)
-    res = []
-    stocks = get_unique_stocks(logs)
-    
-    stocks.each do |stock|
-      units_bought = ((stocks.where(market_id: stock.market_id).sum(:price_bought).first[1])/stock.market.buying_price)
-      units_sold = stocks.where(market_id: stock.market_id).sum(:volume_sold).first[1]
-      units = units_bought - units_sold
-      if units > 0
-        revenue = units * stock.market.selling_price
-        res << { market_id: stock.market_id, stock_name: stock.market.stock_name, symbol: stock.market.symbol, units: units, revenue: revenue  }
-      end
-    end
-    res
-  end
-
-  def collate(logs)
-    # return array of hashes
-    
-  end
 
   def set_account
     begin
