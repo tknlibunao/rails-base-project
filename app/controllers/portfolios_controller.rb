@@ -1,10 +1,14 @@
 class PortfoliosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+  before_action :set_portfolio, :set_logs, :set_wallet, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index
-    @portfolios = Portfolio.all
+    # @portfolios = Portfolio.all
+    
+    @portfolio = Portfolio.where(account_id: current_user.account.id)
+    @wallet = current_user.account.wallet
+    @logs = Log.where(portfolio_id: current_user.account.portfolio.id)
   end
 
   # def new
@@ -63,7 +67,15 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  def set_logs
+    @logs = Log.where(portfolio_id: @portfolio.id)
+  end
+
+  def set_wallet
+    @wallet = current_user.account.wallet
+  end
+  
   def portfolio_params
-    params.require(:portfolio).permit(:buyer_id)
+    params.require(:portfolio).permit(:account_id)
   end
 end
