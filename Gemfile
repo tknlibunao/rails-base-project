@@ -20,6 +20,7 @@ gem 'hamlit-rails'
 gem 'sqlite3'
 gem 'cancancan'
 gem 'rolify'
+gem 'capybara'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
