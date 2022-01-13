@@ -1,18 +1,36 @@
 module PortfoliosHelper
-  def compute_units(log)
-    if log.kind == "Buy"
-      (log.price_bought/log.market.buying_price).round(4)
-    elsif log.kind == "Sell"
-      log.volume_sold
-    end
+  def compute_units(stocks, stock)
+    units_bought = ((stocks.where(market_id: stock.market_id).sum(:price_bought).first[1])/stock.market.buying_price)
+    units_sold = stocks.where(market_id: stock.market_id).sum(:volume_sold).first[1]
+    units_bought - units_sold
   end
 
-  def compute_revenue(log)
-    if log.kind == "Buy"
-      "-$#{log.price_bought}"
-    elsif log.kind == "Sell"
-      "+$#{(log.volume_sold * log.market.selling_price).round(2)}"
+  def compute_revenue(units, stock)
+    units * stock.market.selling_price
+  end
+
+  def get_owned_stocks(logs)
+    res = []
+    stocks = logs.group(:market_id)
+
+    stocks.each do |stock|
+      # units_bought = ((stocks.where(market_id: stock.market_id).sum(:price_bought).first[1])/stock.market.buying_price)
+      # units_sold = stocks.where(market_id: stock.market_id).sum(:volume_sold).first[1]
+      # units = units_bought - units_sold
+      
+      units = compute_units(stocks, stock)
+
+      if units > 0
+        # revenue = units * stock.market.selling_price
+        res << {
+          market_id: stock.market_id,
+          stock_name: stock.market.stock_name,
+          symbol: stock.market.symbol,
+          units: units,
+          revenue: compute_revenue(units, stock)  }
+      end
     end
+    res
   end
 
 end
