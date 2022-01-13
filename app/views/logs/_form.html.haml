@@ -6,9 +6,6 @@
     = f.label "Buying price", :class => "form-label"
     %br/
     = f.number_field :price_bought, step: :any, min: 0.1, required: true, :class => "form-field"
-    - @market.errors.full_messages.each do |e|
-      .buy-sell-error
-        = e
     %br/
     %br/
     = f.submit "Buy"
@@ -25,3 +22,8 @@
     %br/
     = f.submit "Sell"
 
+  .bs-error-container
+    %p.notice= notice
+    %p.alert= alert
+    = flash[:error]
+    = yield
