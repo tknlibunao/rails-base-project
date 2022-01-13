@@ -1,5 +1,7 @@
 - if user_signed_in? && current_user.user_type == "Admin"
   .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px" 
     .span.nav-bar-link
       =link_to 'Home', root_path
     .span.nav-bar-link
@@ -7,7 +9,9 @@
 
   .div.account-welcome-container
     %h1.account-header= "Hello, Admin #{current_user.username}!"
-    %p.account-sub You can manage all APPNAME accounts here.
+    %p.account-sub You can manage all PenguInvest accounts here.
+  .div
+    =link_to "Add New User", new_user_registration_path, :class => "account-button"
 
   %table.all-accounts-container
     %thead.account-table-header
@@ -51,6 +55,8 @@
 
 -else
   .div.main-header 
+  .div.logo
+    =image_tag "logo/logo.png", width: "auto", height: "120px" 
     .span.nav-bar-link
       = link_to 'Log In', new_user_session_path
     .span.nav-bar-button
@@ -58,4 +64,8 @@
 
   .div.welcome-text
     %h1.welcome Trade with confidence on the world's leading social trading platform
-    %p.welcome-sub Join millions who've already discovered smarter investing in multiple types of assets            
+    %p.welcome-sub Join millions who've already discovered smarter investing in multiple types of assets     
+
+  .div.main-footer
+    .span.footer-text Created by Thea Kaylee Libunao & Ria Almeda. © 2022. Disclaimer: This app is created for educational purposes only.
+       

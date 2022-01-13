@@ -1,4 +1,7 @@
 <div class="main-header">
+  <div class ="logo">
+  <%=image_tag "logo/logo.png", width: "auto", height: "120px" %>
+  </div>
   <span class="nav-bar-link"><%= render "devise/shared/links"%></span>
 </div>
 
@@ -24,7 +27,7 @@
   <div class="field">
     <%= f.label :password, :class => "form-label" %>
     <% if @minimum_password_length %>
-    <em class ="form-label">(<%= @minimum_password_length %> characters minimum)</em>
+      <span class ="form-alert">(<%= @minimum_password_length %> characters minimum)</span>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password", :class => "form-field" %>
   </div>
@@ -38,7 +41,7 @@
     <%= f.submit "Sign up", :class => "actions"%>
   </div>
   </div>
-     <div class="form-errors"><%= render "devise/shared/error_messages", resource: resource%></div>
+    
 <% end %>
-
+ <div class="form-errors"><%= render "devise/shared/error_messages", resource: resource%></div>
 
