@@ -3,6 +3,18 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "application";
 
+.all-logs-container {
+  width: 90vw;
+  margin: 0;
+  position: absolute;
+  top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 45px;
+}
+
 .log-table-header {
   background-color: $dark-blue;
   color: $lighter-grey;
@@ -41,4 +53,3 @@
   vertical-align: middle;
   font-size: smaller;
 }
-
