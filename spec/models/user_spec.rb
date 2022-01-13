@@ -13,8 +13,17 @@ RSpec.describe User, type: :model do
       expect(user.errors).to be_present
       expect(user.errors.to_hash.keys).to include(:password)
     end
-  end
 
+    it 'does not save when user inputs existing email address' do
+      User.create(:username => 'Duplicate Name', :email => 'Duplicate@user.com')
+      user.username = 'Duplicate Name'
+      user.email = 'Duplicate@user.com'
+
+      expect(user).not_to be_valid
+      expect(user.errors).to be_present
+      
+    end
+  end
 end
 
 #bundle exec rspec spec/models/user_spec.rb
