@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_092021) do
+ActiveRecord::Schema.define(version: 2022_01_13_030252) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 2022_01_11_092021) do
   create_table "logs", force: :cascade do |t|
     t.integer "market_id", null: false
     t.integer "portfolio_id", null: false
-    t.integer "price_bought"
-    t.integer "volume_bought"
-    t.integer "price_sold"
-    t.integer "volume_sold"
+    t.decimal "price_bought"
+    t.decimal "volume_bought"
+    t.decimal "price_sold"
+    t.decimal "volume_sold"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "kind"
