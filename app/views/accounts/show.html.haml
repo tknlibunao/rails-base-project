@@ -1,27 +1,23 @@
-%table
-  %thead
-    %tr
-      %th First Name
-      %th Last Name
-      %th Contact Number
-      %th Address
-      %th Verified
-      %th Verified at
-  %tbody
-    %tr
-      %td{"data-label" => "First Name"}
-        = @account.first_name
-      %td{"data-label" => "Last Name"}
-        = @account.last_name
-      %td{"data-label" => "Contact Number"}
-        = @account.contact_number
-      %td{"data-label" => "Address"}
-        = @account.address
-      %td{"data-label" => "Verified"}
-        = @account.verified
-      %td{"data-label" => "Verified at"}
-        = @account.verified_at
-      %td{"data-label" => "Actions"}
-        = link_to "Edit", edit_account_path(@account.id)
-%br
-= link_to "Back to Accounts", accounts_path
+.div.main-header 
+  .div.logo
+    =image_tag "logo/logo.png", width: "auto", height: "120px"
+  .span.nav-bar-link
+    =link_to 'Home', root_path
+  .span.nav-bar-link
+    =link_to 'View All Accounts', accounts_path
+  .span.nav-bar-link
+    =link_to 'Log Out', destroy_user_session_path, method: :delete
+
+.div.account-show-container
+  %h1.account-show-header= "#{@account.first_name} #{@account.last_name}"
+  %p.account-sub-show Account details
+  %p.account-detail="First Name: #{@account.first_name}"
+  %p.account-detail="Last Name: #{@account.last_name}"
+  %p.account-detail="Contact Number: #{@account.contact_number}"
+  %p.account-detail="Address: #{@account.address}"
+  - if current_user.user_type == "Admin"
+    %p.account-detail="Verification Status: #{@account.verified}"
+    %p.account-detail="Verification Date: #{@account.verified_at}"
+  
+.div.account-button-show
+  = link_to "Edit Account Details", edit_account_path(@account.id)

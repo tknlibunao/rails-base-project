@@ -1,0 +1,99 @@
+@import "application";
+
+.form-container {
+  background-color: $light-grey;
+  margin: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 30px;
+  border-radius: 8px;
+  width: 350px;
+}
+
+.field {
+  padding-bottom: 10px;
+}
+
+.form-label {
+  color: $white;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.form-alert {
+  color: $dark-grey;
+  font-size: smaller;
+  position: inherit;
+  padding-bottom: 13px;
+  display: inline-block;
+}
+
+.actions {
+  background-color: $dark-blue;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+.actions a:hover {
+  background-color: $orange;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $dark-grey;
+}
+
+.form-field {
+  width: 90%;
+  padding: 6px 15px;
+}
+
+.form-errors {
+  width: 30%;
+  left: 25%;
+  top: 50%;
+  position: fixed;
+  font-size: small;
+  height: 100px;
+  transform: translate(-50%, 0);
+  color: $med-grey;
+}
+
+.login-prompt {
+  color: $dark-grey;
+}
+
+.login-link {
+  text-align: left;
+  display: inline-block;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+
+.login-link a:link {
+  color: $white;
+  text-decoration: none;
+}
+
+.login-link a:visited {
+  color: $white;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  color: $dark-blue;
+  text-decoration: none;
+}

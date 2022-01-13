@@ -1,39 +1,47 @@
-<h2>Sign up</h2>
+<div class="main-header">
+  <div class ="logo">
+  <%=image_tag "logo/logo.png", width: "auto", height: "120px" %>
+  </div>
+  <span class="nav-bar-link"><%= render "devise/shared/links"%></span>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
+ 
+<div class="form-container">
+<div class="form-title">Sign up</div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, :class => "form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-field" %>
   </div>
 
   <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.label :username, :class => "form-label" %><br />
+    <%= f.text_field :username, :class => "form-field"%>
   </div>
 
   <div class="field">
-    <%= f.label :user_type %><br />
-    <%= f.select :user_type, ['Buyer', 'Admin']%>
+    <%= f.label :user_type, :class => "form-label" %><br />
+    <%= f.select :user_type, ['Buyer', 'Admin'], :class => "form-field"%>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, :class => "form-label" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <span class ="form-alert">(<%= @minimum_password_length %> characters minimum)</span>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", :class => "form-field" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, :class => "form-label" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-field" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div>
+    <%= f.submit "Sign up", :class => "actions"%>
   </div>
+  </div>
+    
 <% end %>
+ <div class="form-errors"><%= render "devise/shared/error_messages", resource: resource%></div>
 
-<%= render "devise/shared/links" %>

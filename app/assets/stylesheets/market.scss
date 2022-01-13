@@ -1,0 +1,75 @@
+// Place all the styles related to the Buyer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.container {
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.market-welcome-container {
+  // margin-left: 70px;
+  position: absolute;
+  top: 165px;
+  left: 70px;
+  // margin-top: 160px;
+}
+
+.market-header {
+  color: $dark-grey;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+.market-sub {
+  color: $med-grey;
+  font-size: 1.5em;
+}
+
+.all-markets-container {
+  width: 90vw;
+  margin: 0;
+  position: absolute;
+  top: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 45px;
+}
+
+.market-table-header {
+  background-color: $dark-blue;
+  color: $lighter-grey;
+  width: 852px;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  vertical-align: middle;
+  text-transform: capitalize;
+  font-size: smaller;
+  text-align: center;
+}
+// column width
+.market-header-6 {
+  width: 60px;
+  text-align: center;
+  padding: 10px;
+}
+
+.market-header-10 {
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+}
+
+.market-table-column {
+  background-color: $lighter-grey;
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: smaller;
+}
+
