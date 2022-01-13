@@ -17,16 +17,16 @@
 
     .div.market-welcome-container
       %h1.market-header= "Hello, #{current_user.username}!"
-      %p.market-sub= "Wallet Balance: $#{@wallet.actual_balance}"
       %p.account-sub-show portfolio preview
+      %p.market-sub= "Wallet balance: $#{@wallet.actual_balance}"
 
     %table.all-markets-container
       %thead.market-table-header
         %th.portfolio-header-10 Stock Name
         %th.portfolio-header-6 Symbol
         %th.portfolio-header-6 Owned Units
-        %th.portfolio-header-6 Revenue
-        %th.portfolio-header-6 Actions
+        %th.portfolio-header-6 Market Value
+        %th.portfolio-header-6 
       %tbody
         - get_owned_stocks(@logs).each do |stock|
           %tr.market-table-column
@@ -41,6 +41,3 @@
               
             %td.portfolio-header-6{"data-label" => "Actions"}
               = link_to 'View', new_market_log_path(stock[:market_id])
-  
-  .p.sub-button
-    = link_to 'Add Portfolio', new_portfolio_path
