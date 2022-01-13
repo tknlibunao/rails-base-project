@@ -21,15 +21,44 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
     # @log = @portfolio.log.build(log_params)
     
-    if @log.save
-      redirect_to portfolios_path, notice: "Transaction successful"
-    else
-      render :new, error: "Transaction failed"
-    end
+    check_transaction(@log)
+    
+    # if @log.save
+    #   redirect_to portfolios_path, notice: "Transaction successful"
+    # else
+    #   render :new, error: "Transaction failed"
+    # end
 
   end
 
   private
+
+  def check_transaction(log)
+    @wallet = current_user.account.wallet
+
+    case log.kind
+    when "Buy"
+      # check if wallet balance >= price_bought
+      @wallet.actual_balance = current_user.account.wallet.actual_balance - log.price_bought
+      
+      # proceed with transaction if wallet balance > 0 after
+      @log.save if @wallet.actual_balance.positive?
+
+      update_wallet(@wallet, @log)
+    when "Sell"
+      
+    else
+    end
+  end
+
+  def update_wallet(wallet, log)
+    if log.save && wallet.actual_balance.positive?
+      wallet.save
+      redirect_to portfolios_path, notice: "Transaction successful"
+    else
+      redirect_back fallback_location: portfolios_path, alert: "Transaction failed"
+    end
+  end
 
   def log_params
     params.require(:log).permit(:price_bought, :volume_bought, :price_sold, :volume_sold, :kind, :market_id, :portfolio_id)
