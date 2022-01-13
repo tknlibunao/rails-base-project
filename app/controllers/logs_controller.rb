@@ -42,7 +42,7 @@ class LogsController < ApplicationController
       @wallet.actual_balance = current_user.account.wallet.actual_balance - log.price_bought
       
       # proceed with transaction if wallet balance > 0 after
-      if @wallet.actual_balance.positive?
+      if @wallet.actual_balance >= 0
         if log.save
           if @wallet.save
             redirect_to portfolios_path, notice: "Transaction successful"
@@ -57,12 +57,12 @@ class LogsController < ApplicationController
       end
     when "Sell"
       # check if stock units >= volume_sold
-      remaining_units = compute_stock_units(log) - log.volume_sold
+      @remaining_units = compute_stock_units(log) - log.volume_sold
 
       # proceed with transaction if stock units > 0 after
-      if remaining_units.positive?
+      if @remaining_units >= 0
         if log.save
-          @wallet.balance = current_user.account.wallet.actual_balance + compute_stock_revenue(log)
+          @wallet.actual_balance = current_user.account.wallet.actual_balance + compute_stock_revenue(log)
           if @wallet.save
             redirect_to portfolios_path, notice: "Transaction successful"
           else
@@ -72,7 +72,7 @@ class LogsController < ApplicationController
           redirect_back fallback_location: portfolios_path, alert: "Transaction failed"
         end
       else
-        redirect_back fallback_location: portfolios_path, alert: "Please check your owned stocks"
+        redirect_back fallback_location: portfolios_path, alert: "Remaining: #{compute_stock_units(log)} Please check your owned stocks"
       end
     else
     end
@@ -83,7 +83,7 @@ class LogsController < ApplicationController
   end
 
   def compute_stock_units(log)
-    @stocks = Log.where(portfolio_id: @portfolio.id, market_id: log.market_id)
+    @stocks = Log.where(portfolio_id: current_user.account.portfolio.id, market_id: log.market_id)
     
     units_bought = @stocks.sum(:price_bought)/log.market.buying_price
     units_sold = @stocks.sum(:volume_sold)
