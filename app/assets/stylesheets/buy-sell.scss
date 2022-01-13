@@ -1,0 +1,29 @@
+@import "application";
+
+.buy-container {
+  top: 200px;
+  height: 100px;
+  background-color: $light-blue;
+  width: 25vw;
+  margin: auto;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.sell-container {
+  top: 200px;
+  height: 100px;
+  background-color: $orange;
+  width: 25vw;
+  margin: auto;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
