@@ -1,37 +1,46 @@
-%h1 Stock Trading App
-
-%h2 Markets
-
 .container
-  %table
-    %thead
-      %th Stock Name
-      %th Symbol
-      %th Volume
-      %th Trades
-      %th Buying Price
-      %th Selling Price
-      %th Actions
-    %tbody
-      - @markets.each do |market|
-        %td
-          = market.stock_name
-        %td
-          = market.symbol
-        %td
-          = market.volume
-        %td
-          = market.trades
-        %td
-          = "$#{market.buying_price}"
-        %td
-          = "$#{market.selling_price}"
-        %td
-          = link_to 'Show', market_path(market.id)
-          |
-          = link_to 'Edit', edit_market_path(market.id)
-          |
-          = link_to 'Delete', market_path(market.id), method: :delete, data: { confirm: 'Are you sure?' }
+  - if user_signed_in?
+    .div.main-header
+      .div.logo
+        =image_tag "logo/logo.png", width: "auto", height: "120px" 
+      .span.nav-bar-link
+        =link_to 'Home', root_path
+      .span.nav-bar-link
+        =link_to 'Wallet', wallets_path
+      .span.nav-bar-link
+        =link_to 'Portfolio', portfolios_path
+      .span.nav-bar-link
+        =link_to 'Market', markets_path
+      .span.nav-bar-link
+        =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-.p.sub-button
-  = link_to 'Add Market', new_market_path
+    .div.market-welcome-container
+      %h1.market-header= "Hello, #{current_user.username}!"
+      %p.market-sub STOCK MARKET
+
+    %table.all-markets-container
+      %thead.market-table-header
+        %th.market-header-10 Stock Name
+        %th.market-header-6 Symbol
+        %th.market-header-6 Volume
+        %th.market-header-6 Trades
+        %th.market-header-6 Buying Price
+        %th.market-header-6 Selling Price
+        %th.market-header-10 Actions
+      %tbody
+        - @markets.each do |market|
+          %tr.market-table-column
+            %td.market-header-10{"data-label" => "Stock Name"}
+              = market.stock_name
+            %td.market-header-6{"data-label" => "Symbol"}
+              = market.symbol
+            %td.market-header-6{"data-label" => "Volume"}
+              = market.volume
+            %td.market-header-6{"data-label" => "Trades"}
+              = market.trades
+            %td.market-header-6{"data-label" => "Buying Price"}
+              = "$#{market.buying_price}"
+            %td.market-header-6{"data-label" => "Selling Price"}
+              = "$#{market.selling_price}"
+            %td.market-header-10{"data-label" => "Actions"}
+              = link_to 'View', new_market_log_path(market.id)

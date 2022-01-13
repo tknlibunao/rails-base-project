@@ -1,0 +1,24 @@
+// Place all the styles related to the Buyer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.portfolio-header-6 {
+  width: 120px;
+  text-align: center;
+  padding: 10px;
+}
+
+.portfolio-header-10 {
+  width: 265px;
+  text-align: center;
+  padding: 10px;
+}
+
+.portfolio-table-column {
+  background-color: $lighter-grey;
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: smaller;
+}
+

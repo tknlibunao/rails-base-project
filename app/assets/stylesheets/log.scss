@@ -1,0 +1,44 @@
+// Place all the styles related to the Buyer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.log-table-header {
+  background-color: $dark-blue;
+  color: $lighter-grey;
+  width: 852px;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  vertical-align: middle;
+  text-transform: capitalize;
+  font-size: smaller;
+  text-align: center;
+}
+// column width
+
+.log-header-4 {
+  width: 150px;
+  text-align: center;
+  padding: 10px;
+}
+
+.log-header-6 {
+  width: 160px;
+  text-align: center;
+  padding: 10px;
+}
+
+.log-header-10 {
+  width: 480px;
+  text-align: center;
+  padding: 10px;
+}
+
+.log-table-column {
+  background-color: $lighter-grey;
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: smaller;
+}
+

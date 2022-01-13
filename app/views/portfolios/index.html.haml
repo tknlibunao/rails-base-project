@@ -1,38 +1,45 @@
-%h1 Stock Trading App
-
-%h2 Portfolios
-
 .container
-  %table
-    %thead
-      %th User Id
-      %th Account Id
-      %th Portfolio Id
-      %th Email
-      %th First Name
-      %th Last Name
-      %th Actions
-    %tbody
-      - @portfolios.each do |portfolio|
-        %tr
-          %td{"data-label" => "User Id"}
-            = portfolio.account.user.id
-          %td{"data-label" => "Account Id"}
-            = portfolio.account_id
-          %td{"data-label" => "Portfolio Id"}
-            = portfolio.id
-          %td{"data-label" => "Email"}
-            = portfolio.account.user.email
-          %td{"data-label" => "First Name"}
-            = portfolio.account.first_name
-          %td{"data-label" => "Last Name"}
-            = portfolio.account.last_name
-          %td{"data-label" => "Actions"}
-            = link_to 'Show', portfolio_path(portfolio.id)
-            |
-            = link_to 'Edit', edit_portfolio_path(portfolio.id)
-            |
-            = link_to 'Delete', portfolio_path(portfolio.id), method: :delete, data: { confirm: 'Are you sure?' }
+  - if user_signed_in?
+    .div.main-header 
+      .div.logo
+        =image_tag "logo/logo.png", width: "auto", height: "120px"
+      .span.nav-bar-link
+        =link_to 'Home', root_path
+      .span.nav-bar-link
+        =link_to 'Wallet', wallets_path
+      .span.nav-bar-link
+        =link_to 'Portfolio', portfolios_path
+      .span.nav-bar-link
+        =link_to 'Market', markets_path
+      .span.nav-bar-link
+        =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-.p.sub-button
-  = link_to 'Add Portfolio', new_portfolio_path
+    .div.market-welcome-container
+      %h1.market-header= "Hello, #{current_user.username}!"
+      %p.market-sub Here's your portfolio.
+      %p.market-sub= "Wallet: $#{@wallet.actual_balance}"
+
+    %table.all-markets-container
+      %thead.market-table-header
+        %th.portfolio-header-10 Stock Name
+        %th.portfolio-header-6 Symbol
+        %th.portfolio-header-6 Owned Units
+        %th.portfolio-header-6 Revenue
+        %th.portfolio-header-6 Actions
+      %tbody
+        - get_owned_stocks(@logs).each do |stock|
+          %tr.market-table-column
+            %td.portfolio-header-10{"data-label" => "Stock Name"}
+              = stock[:stock_name]
+            %td.portfolio-header-6{"data-label" => "Symbol"}
+              = stock[:symbol]
+            %td.portfolio-header-6{"data-label" => "Owned Units"}
+              = stock[:units].round(5)
+            %td.portfolio-header-6{"data-label" => "Revenue"}
+              = number_to_currency(stock[:revenue], precision: 2, delimiter: ",")
+              
+            %td.portfolio-header-6{"data-label" => "Actions"}
+              = link_to 'View', new_market_log_path(stock[:market_id])
+  
+  .p.sub-button
+    = link_to 'Add Portfolio', new_portfolio_path
