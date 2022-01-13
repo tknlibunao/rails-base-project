@@ -24,10 +24,9 @@
         %th.market-header-10 Stock Name
         %th.market-header-6 Symbol
         %th.market-header-6 Volume
-        -# %th.market-header-6 Trades
         %th.market-header-6 Buying Price
         %th.market-header-6 Selling Price
-        %th.market-header-10 Actions
+        %th.market-header-6 Actions
       %tbody
         - @markets.each do |market|
           %tr.market-table-column
@@ -37,11 +36,9 @@
               = market.symbol
             %td.market-header-6{"data-label" => "Volume"}
               = market.volume
-            -# %td.market-header-6{"data-label" => "Trades"}
-            -#   = market.trades
             %td.market-header-6{"data-label" => "Buying Price"}
               = "$#{market.buying_price}"
             %td.market-header-6{"data-label" => "Selling Price"}
               = "$#{market.selling_price}"
-            %td.market-header-10{"data-label" => "Actions"}
+            %td.market-header-6{"data-label" => "Actions"}
               = link_to 'View', new_market_log_path(market.id)
