@@ -42,21 +42,25 @@ class LogsController < ApplicationController
       @wallet.actual_balance = current_user.account.wallet.actual_balance - log.price_bought
       
       # proceed with transaction if wallet balance > 0 after
-      @log.save if @wallet.actual_balance.positive?
+      if @wallet.actual_balance.positive?
+        if @log.save
+          if @wallet.save
+            redirect_to portfolios_path, notice: "Transaction successful"
+          else
+            redirect_back fallback_location: portfolios_path, alert: "Error in updating wallet"
+          end
 
-      update_wallet(@wallet, @log)
+        else
+          redirect_back fallback_location: portfolios_path, alert: "Transaction failed"
+        end
+        
+      else
+        redirect_back fallback_location: portfolios_path, alert: "Please check your wallet balance"
+      end
+
     when "Sell"
       
     else
-    end
-  end
-
-  def update_wallet(wallet, log)
-    if log.save && wallet.actual_balance.positive?
-      wallet.save
-      redirect_to portfolios_path, notice: "Transaction successful"
-    else
-      redirect_back fallback_location: portfolios_path, alert: "Transaction failed"
     end
   end
 
