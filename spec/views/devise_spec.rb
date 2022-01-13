@@ -50,4 +50,4 @@ RSpec.describe "Devise", type: :feature do
 
 end
 
-#   bundle exec rspec spec/views/devise_spec.rb
+#   bundle exec rspec spec/views/devise_spec.rb\
