@@ -9,8 +9,8 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.where(account_id: current_user.account.id)
     @wallet = current_user.account.wallet
     @logs = Log.where(portfolio_id: current_user.account.portfolio.id)
-    @stocks = get_unique_stocks(@logs)
-    @owned = get_owned_stocks(@stocks)
+    # @stocks = get_unique_stocks(@logs)
+    @stocks = get_owned_stocks(@logs)
   end
 
   # def new
@@ -55,8 +55,10 @@ class PortfoliosController < ApplicationController
     stocks = logs.group(:market_id)
   end
 
-  def get_owned_stocks(stocks)
+  def get_owned_stocks(logs)
     res = []
+    stocks = get_unique_stocks(logs)
+    
     stocks.each do |stock|
       units_bought = ((stocks.where(market_id: stock.market_id).sum(:price_bought).first[1])/stock.market.buying_price)
       units_sold = stocks.where(market_id: stock.market_id).sum(:volume_sold).first[1]
