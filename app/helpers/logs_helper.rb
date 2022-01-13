@@ -36,11 +36,11 @@ module LogsHelper
   end
 
   def compute_volume_bought(price_bought, buying_price)
-    (price_bought/buying_price).round(4)
+    (price_bought/buying_price)
   end
 
   def compute_price_sold(volume_sold, selling_price)
-    (volume_sold * selling_price).round(2)
+    (volume_sold * selling_price)
   end
 
   def compute_total_amount(log)
