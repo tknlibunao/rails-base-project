@@ -51,7 +51,7 @@
             = link_to "Edit", edit_account_path(account.id)
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
   .div.account-button
-    =link_to "Add New User", new_user_path
+    =link_to "Add New Buyer", new_user_path
 
 - elsif user_signed_in? && current_user.user_type == "Buyer"
   .div.main-header-home
