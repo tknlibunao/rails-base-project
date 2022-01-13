@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Home', type: :feature do 
-  describe 'Renders home page' do
+  describe 'Home page' do
     before {visit root_path}
     it 'shows log in and sign up options' do
       within 'body' do
-        expect(page).to have_content('Log in')
-        expect(page).to have_content('Sign up')
+        expect(page).to have_content('Log In')
+        expect(page).to have_content('Sign Up')
       end
     end
 
