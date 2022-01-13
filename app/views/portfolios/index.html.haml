@@ -34,7 +34,7 @@
             %td.portfolio-header-6{"data-label" => "Symbol"}
               = stock[:symbol]
             %td.portfolio-header-6{"data-label" => "Owned Units"}
-              = stock[:units].round(5)
+              = stock[:units]
             %td.portfolio-header-6{"data-label" => "Revenue"}
               = number_to_currency(stock[:revenue], precision: 2, delimiter: ",")
               
