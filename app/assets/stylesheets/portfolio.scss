@@ -3,6 +3,18 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "application";
 
+.all-portfolios-container {
+  width: 90vw;
+  margin: 0;
+  position: absolute;
+  top: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 45px;
+}
+
 .portfolio-header-6 {
   width: 120px;
   text-align: center;
@@ -21,4 +33,3 @@
   vertical-align: middle;
   font-size: smaller;
 }
-
