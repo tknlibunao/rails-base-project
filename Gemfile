@@ -22,10 +22,6 @@ group :development, :test do
   gem 'rest-client'
 end
 
-group :production do
-  gem 'pg'
-end
-
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
