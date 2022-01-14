@@ -1,7 +1,7 @@
 module StudioGhibli
   class Client
-    def self.films(id="2baf70d1-42bb-4437-b551-e5fed5a87abe")
-      response = Request.call(http_method: 'get', endpoint: "/films?id=#{id}")
+    def self.films
+      response = Request.call(http_method: 'get', endpoint: "/films")
     end
 
     def self.people
