@@ -136,7 +136,7 @@ ExchangeRate::Client.historical
 
 [Studio Ghibli API](https://ghibliapi.herokuapp.com/) is a public API created to give users access to the different Studio Ghibli resources. Through this, users can easily request for the information they need by following regular REST calls.
 
-For more information, you can checkout the [main repository](https://ghibliapi.herokuapp.com/).
+For more information, you can checkout the [main repository](https://github.com/janaipakos/ghibliapi).
 
 ## Endpoints
 
@@ -165,15 +165,15 @@ For this repo, the available endpoints are:
 
 ### Access via terminal
 
-```
-$ rails c
+```ruby
+rails c
 
-> StudioGhibli::Client.films
+StudioGhibli::Client.films
 ```
 
 ### Sample Response (`202`)
 
-```
+```json
 [
   {
     "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
@@ -240,15 +240,15 @@ $ rails c
 
 ### Access via terminal
 
-```
-$ rails c
+```ruby
+rails c
 
-> StudioGhibli::Client.people
+StudioGhibli::Client.people
 ```
 
 ### Sample Response (`202`)
 
-```
+```json
 [
   {
     "id": "ba924631-068e-4436-b6de-f3283fa848f0",
@@ -291,15 +291,15 @@ $ rails c
 
 ### Access via terminal
 
-```
-$ rails c
+```ruby
+rails c
 
-> StudioGhibli::Client.locations
+StudioGhibli::Client.locations
 ```
 
 ### Sample Response (`202`)
 
-```
+```json
 [
   {
     "id": "11014596-71b0-4b3e-b8c0-1c4b15f28b9a",
