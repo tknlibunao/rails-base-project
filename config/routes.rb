@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/latest/exchangerate', to: 'exchange_rates#latest'
+    get '/historical/exchangerate', to: 'exchange_rates#historical'
  end
 
   # namespace :api do
