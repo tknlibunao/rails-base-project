@@ -153,7 +153,7 @@ For this repo, the available endpoints are:
 
 <br>
 
-## Show All Films
+## [Show All Films](#show-all-films)
 
 `GET` /films
 
@@ -228,7 +228,7 @@ $ rails c
 ]
 ```
 
-## Show All People
+## [Show All People](#show-all-people)
 
 `GET` /people
 
