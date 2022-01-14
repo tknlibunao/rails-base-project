@@ -16,10 +16,10 @@ gem 'hamlit-rails'
 gem 'cancancan'
 gem 'rolify'
 gem 'capybara'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rest-client'
 end
 
 group :development do
