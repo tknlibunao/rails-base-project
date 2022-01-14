@@ -1,0 +1,29 @@
+= form_for [@market, @log] do |f|
+  = f.hidden_field :market_id, value: @market.id
+  = f.hidden_field :portfolio_id, value: @portfolio.id
+  = f.hidden_field :kind, value: "Buy"
+  .buy-container
+    = f.label "Price", :class => "form-label"
+    %br/
+    = f.number_field :price_bought, step: :any, min: 0.1, required: true, :class => "form-field", :placeholder => "Enter amount in dollars"
+    %br/
+    %br/
+    = f.submit "Buy"
+
+= form_for [@market, @log] do |f|
+  = f.hidden_field :market_id, value: @market.id
+  = f.hidden_field :portfolio_id, value: @portfolio.id
+  = f.hidden_field :kind, value: "Sell"
+  .sell-container
+    = f.label "Volume", :class => "form-label"
+    %br/
+    = f.number_field :volume_sold, step: :any, min: 1e-30, required: true, :class => "form-field", :placeholder => "Enter amount in units" 
+    %br/
+    %br/
+    = f.submit "Sell"
+
+  .bs-error-container
+    %p.notice= notice
+    %p.alert= alert
+    = flash[:error]
+    = yield

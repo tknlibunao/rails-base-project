@@ -1,22 +1,52 @@
-.div.main-header 
-  .div.logo
-    =image_tag "logo/logo.png", width: "auto", height: "120px"
-  .span.nav-bar-link
-    =link_to 'Home', root_path
-  .span.nav-bar-link
-    =link_to 'View All Accounts', accounts_path
-  .span.nav-bar-link
-    =link_to 'Log Out', destroy_user_session_path, method: :delete
+- if user_signed_in? && current_user.user_type == "Admin"
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'View All Accounts', accounts_path
+    .span.nav-bar-link
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-.div.account-show-container
-  %h1.account-show-header= "#{@account.first_name} #{@account.last_name}"
-  %p.account-sub-show Account details
-  %p.account-detail="First Name: #{@account.first_name}"
-  %p.account-detail="Last Name: #{@account.last_name}"
-  %p.account-detail="Contact Number: #{@account.contact_number}"
-  %p.account-detail="Address: #{@account.address}"
-  %p.account-detail="Verification Status: #{@account.verified}"
-  %p.account-detail="Verification Date: #{@account.verified_at}"
+  .div.account-show-container
+    %h1.account-show-header= "#{@account.first_name} #{@account.last_name}"
+    %p.account-sub-show Account details
+    %p.account-detail="First Name: #{@account.first_name}"
+    %p.account-detail="Last Name: #{@account.last_name}"
+    %p.account-detail="Contact Number: #{@account.contact_number}"
+    %p.account-detail="Address: #{@account.address}"
+    %p.account-detail="Verification Status: #{@account.verified}"
+    %p.account-detail="Verification Date: #{@account.verified_at}"
   
-.div.account-button-show
-  = link_to "Edit Account Details", edit_account_path(@account.id)
+  .div.account-button-show
+    = link_to "Edit Account Details", edit_account_path(@account.id)
+
+- elsif user_signed_in? && current_user.user_type == "Buyer"
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Profile', account_path(current_user.account.id)
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Logs', logs_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
+
+  .div.account-show-container
+    %h1.account-show-header= "#{@account.first_name} #{@account.last_name}"
+    %p.account-sub-show Account details
+    %p.account-detail="First Name: #{@account.first_name}"
+    %p.account-detail="Last Name: #{@account.last_name}"
+    %p.account-detail="Contact Number: #{@account.contact_number}"
+    %p.account-detail="Address: #{@account.address}"
+
+  
+  .div.account-button-show
+    = link_to "Edit Account Details", edit_account_path(@account.id)

@@ -1,9 +1,10 @@
 class MarketsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_market, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
-    @markets = Market.all
+    @markets = Market.all.where("volume > ?", 0)
   end
 
   def new

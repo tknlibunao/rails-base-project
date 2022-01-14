@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
-
-
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
@@ -18,9 +16,15 @@ gem 'devise'
 gem 'hamlit-rails'
 gem 'cancancan'
 gem 'rolify'
+gem 'capybara'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rest-client'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :development do

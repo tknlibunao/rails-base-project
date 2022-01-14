@@ -1,0 +1,40 @@
+- if user_signed_in?
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Profile', account_path(current_user.account.id)
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Logs', logs_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
+
+    .div.market-welcome-container
+      -# %h1.market-header= "Hello, #{current_user.username}!"
+      %p.account-sub-show Account Details
+      %p.market-sub
+        ="Wallet Balance: #{number_to_currency(@wallet.actual_balance, precision: 2, delimiter: ",")}"
+      %p.market-sub
+        ="Volume Owned: #{@units_owned.round(2)} units"
+      %p.account-sub-show Stock preview
+      %p.market-sub
+        =@market.stock_name
+      %p.market-sub
+        ="(#{@market.symbol})"
+      %p.market-sub
+        - if @market.volume > 0
+          ="Market Volume: #{@market.volume} units"
+        - else
+          ="Market Volume: SOLD OUT"
+      %p.market-sub
+        ="Buying Price: $#{@market.buying_price}"
+      %p.market-sub
+        ="Selling Price: $#{@market.selling_price}"
+
+= render 'form'

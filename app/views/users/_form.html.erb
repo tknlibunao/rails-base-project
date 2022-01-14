@@ -1,0 +1,47 @@
+<%= form_for @user do |f| %>
+ <div class="form-container">
+  <div class="field">
+    <%= f.label :email, :class => "form-label" %><br />
+    <%= f.email_field :email, autofocus: true , :class => "form-field"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :username, :class => "form-label" %><br />
+    <%= f.text_field :username, autofocus: true, :class => "form-field"%>
+  </div>
+
+  <div class="hidden-field">
+    <%= f.hidden_field :user_type, :class => "form-hidden-field", value: "Buyer" %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :password , :class => "form-label"%>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", :class => "form-field" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation , :class => "form-label"%><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-field"%>
+  </div>
+
+    <%= f.submit "Create User", :class => "actions" %>
+  </div>
+
+   <% if @user.errors.any? %>
+
+    <div class="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<% end %>

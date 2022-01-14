@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_081113) do
+ActiveRecord::Schema.define(version: 2022_01_13_030252) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2022_01_07_081113) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.integer "market_id", null: false
+    t.integer "portfolio_id", null: false
+    t.decimal "price_bought"
+    t.decimal "volume_bought"
+    t.decimal "price_sold"
+    t.decimal "volume_sold"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "kind"
+    t.index ["market_id"], name: "index_logs_on_market_id"
+    t.index ["portfolio_id"], name: "index_logs_on_portfolio_id"
+  end
+
   create_table "market_portfolios", force: :cascade do |t|
     t.integer "market_id", null: false
     t.integer "portfolio_id", null: false
@@ -32,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_01_07_081113) do
     t.decimal "volume_bought"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "transaction_type"
     t.index ["market_id", "portfolio_id"], name: "index_market_portfolios_on_market_id_and_portfolio_id", unique: true
     t.index ["market_id"], name: "index_market_portfolios_on_market_id"
     t.index ["portfolio_id"], name: "index_market_portfolios_on_portfolio_id"
@@ -102,6 +117,8 @@ ActiveRecord::Schema.define(version: 2022_01_07_081113) do
     t.index ["account_id"], name: "index_wallets_on_account_id"
   end
 
+  add_foreign_key "logs", "markets"
+  add_foreign_key "logs", "portfolios"
   add_foreign_key "market_portfolios", "markets"
   add_foreign_key "market_portfolios", "portfolios"
   add_foreign_key "portfolios", "accounts"
