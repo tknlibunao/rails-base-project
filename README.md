@@ -142,9 +142,9 @@ For more information, you can checkout the [main repository](https://ghibliapi.h
 
 For this repo, the available endpoints are:
 
-- [films](#films)
-- [people](#people)
-- [locations](#locations)
+- [films](#Show-All-Films)
+- [people](#Show-All-People)
+- [locations](#Show-All-Locations)
 
 ## Responses
 - `200`: An array of info
@@ -171,7 +171,7 @@ $ rails c
 > StudioGhibli::Client.films
 ```
 
-### Sample Response (202)
+### Sample Response (`202`)
 
 ```
 [
@@ -246,7 +246,7 @@ $ rails c
 > StudioGhibli::Client.people
 ```
 
-### Sample Response (202)
+### Sample Response (`202`)
 
 ```
 [
@@ -279,7 +279,7 @@ $ rails c
 ]
 ```
 
-## Show All Locations
+## [Show All Locations](#show-all-locations)
 
 `GET` /locations
 
@@ -297,7 +297,7 @@ $ rails c
 > StudioGhibli::Client.locations
 ```
 
-### Sample Response (202)
+### Sample Response (`202`)
 
 ```
 [
