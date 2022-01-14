@@ -17,8 +17,15 @@
 
     .div.market-welcome-container
       %h1.market-header= "Hello, #{current_user.username}!"
+      -# %h1.market-header= "Hello, #{current_user.account.first_name}!"
       %p.account-sub-show portfolio preview
-      %p.market-sub= "Wallet balance: $#{@wallet.actual_balance}"
+      %p.market-sub= "Wallet balance: #{number_to_currency(@wallet.actual_balance, precision: 2, delimiter: ",")}"
+      - @owned = get_owned_stocks(@logs)
+      - @revenue = 0
+      - unless @owned.empty?
+        - @owned.each do |stock|
+          - @revenue = @revenue + stock[:revenue]
+      %p.market-sub="Revenue: #{number_to_currency(@revenue, precision: 2, delimiter: ",")}"
 
     %table.all-portfolios-container
       %thead.market-table-header
@@ -26,7 +33,7 @@
         %th.portfolio-header-6 Symbol
         %th.portfolio-header-6 Owned Units
         %th.portfolio-header-6 Market Value
-        %th.portfolio-header-6 
+        %th.portfolio-header-6 Action 
       %tbody
         - get_owned_stocks(@logs).each do |stock|
           %tr.market-table-column
