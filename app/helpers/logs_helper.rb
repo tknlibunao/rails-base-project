@@ -28,10 +28,10 @@ module LogsHelper
   def generate_log_message(log)
     if log.kind == "Buy"
       units = compute_volume_bought(log.price_bought, log.market.buying_price)
-      "You bought #{units} units of #{log.market.symbol} stocks at market price of #{convert_to_money(log.market.buying_price)}"
+      "You bought #{units.round(2)} units of #{log.market.symbol} stocks at market price of #{convert_to_money(log.market.buying_price)}"
     elsif log.kind == "Sell"
       revenue = compute_price_sold(log.volume_sold, log.market.selling_price)
-      "You sold #{log.volume_sold} units of #{log.market.symbol} stocks at market price of #{convert_to_money(log.market.selling_price)}"
+      "You sold #{log.volume_sold.round(2)} units of #{log.market.symbol} stocks at market price of #{convert_to_money(log.market.selling_price)}"
     end
   end
 
