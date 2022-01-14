@@ -146,23 +146,23 @@ For this repo, the available endpoints are:
 - [people](#people)
 - [locations](#locations)
 
-## [Show All Films](#films)
+## Show All Films
 
 `GET` /films
 
 > returns information about all Studio Ghibli films
 
-## URL
+### URL
 
 `/anime/ghibli/films`
 
-## Rails console command
+### Rails console command
 
 `StudioGhibli::Client.films`
 
-## Sample Response
+### Sample Response
 
-`
+```
 [
   {
     "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
@@ -215,4 +215,4 @@ For this repo, the available endpoints are:
     "url": "https://ghibliapi.herokuapp.com/films/12cfb892-aac0-4c5b-94af-521852e46d6a"
   }
 ]
-`
+```
