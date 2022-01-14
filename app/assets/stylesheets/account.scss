@@ -22,14 +22,13 @@
 
 .all-accounts-container {
   width: 90vw;
-  margin: 0;
+  margin: auto;
   position: absolute;
-  top: 75vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 300px;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  padding-left: 10%;
   padding-bottom: 45px;
 }
 
@@ -75,7 +74,7 @@
   width: 300px;
   cursor: pointer;
   position: absolute;
-  top: 230px;
+  top: 210px;
   right: 0;
   margin-right: 70px;
 }

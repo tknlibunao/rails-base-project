@@ -1,0 +1,48 @@
+@import "application";
+
+.buy-container {
+  top: 200px;
+  right: 90px;
+  height: 110px;
+  background-color: $med-grey;
+  width: 25vw;
+  margin: auto;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.sell-container {
+  top: 350px;
+  right: 90px;
+  height: 110px;
+  background-color: $dark-blue;
+  width: 25vw;
+  margin: auto;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.bs-error-container {
+  top: 480px;
+  right: 90px;
+  height: 100px;
+  color: $dark-blue;
+  width: 25vw;
+  margin: auto;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}

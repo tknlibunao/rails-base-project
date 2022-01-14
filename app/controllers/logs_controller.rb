@@ -15,6 +15,7 @@ class LogsController < ApplicationController
     @market = Market.find(params[:market_id])
     @portfolio = current_user.account.portfolio
     @wallet = current_user.account.wallet
+    @units_owned = compute_units_owned(@market)
   end
 
   def create
@@ -35,25 +36,29 @@ class LogsController < ApplicationController
 
   def check_transaction(log)
     @wallet = current_user.account.wallet
+    @market = Market.find(params[:market_id])
 
     case log.kind
     when "Buy"
-      # check if wallet balance >= price_bought
+      # check if wallet balance >= price_bought and market volume >= volume bought
       @wallet.actual_balance = current_user.account.wallet.actual_balance - log.price_bought
-      
+      @market.volume = log.market.volume - log.price_bought/log.market.buying_price
+
       # proceed with transaction if wallet balance > 0 after
-      if @wallet.actual_balance >= 0
+      if @wallet.actual_balance >= 0 && @market.volume >= 0
         if log.save
-          if @wallet.save
+          if @wallet.save && @market.save
             redirect_to portfolios_path, notice: "Transaction successful"
           else
-            redirect_back fallback_location: portfolios_path, alert: "Error in updating wallet"
+            redirect_back fallback_location: portfolios_path, alert: "Error in updating wallet and/or market"
           end
         else
           redirect_back fallback_location: portfolios_path, alert: "Transaction failed"
         end
-      else
-        redirect_back fallback_location: portfolios_path, alert: "Please check your wallet balance"
+      elsif @wallet.actual_balance < 0
+        redirect_back fallback_location: portfolios_path, alert: "Ooops! Insufficient funds. Please cash in first or reduce your purchase."
+      elsif @market.volume < 0
+        redirect_back fallback_location: portfolios_path, alert: "Ooops! Insufficient market volume. Please check stock volume available."
       end
     when "Sell"
       # check if stock units >= volume_sold
@@ -63,16 +68,17 @@ class LogsController < ApplicationController
       if @remaining_units >= 0
         if log.save
           @wallet.actual_balance = current_user.account.wallet.actual_balance + compute_stock_revenue(log)
-          if @wallet.save
+          @market.volume = @market.volume + log.volume_sold
+          if @wallet.save && @market.save
             redirect_to portfolios_path, notice: "Transaction successful"
           else
-            redirect_back fallback_location: portfolios_path, alert: "Error in updating wallet"
+            redirect_back fallback_location: portfolios_path, alert: "Error in updating wallet and/or market"
           end
         else
           redirect_back fallback_location: portfolios_path, alert: "Transaction failed"
         end
       else
-        redirect_back fallback_location: portfolios_path, alert: "Remaining: #{compute_stock_units(log)} Please check your owned stocks"
+        redirect_back fallback_location: portfolios_path, alert: "Oh no! Can't sell what you don't have. Please check the volume you own."
       end
     else
     end
@@ -89,6 +95,22 @@ class LogsController < ApplicationController
     units_sold = @stocks.sum(:volume_sold)
 
     units_bought - units_sold
+  end
+
+  def compute_units_owned(market)
+    @stock_logs = Log.where(portfolio_id: current_user.account.portfolio.id, market_id: market.id)
+
+    unless @stock_logs.empty?
+      if @stock_logs.count > 1
+        units_bought = @stock_logs.sum(:price_bought)/market.buying_price
+        units_sold = @stock_logs.sum(:volume_sold)
+        units_bought - units_sold
+      else
+        @stock_logs[0].price_bought/@stock_logs[0].market.buying_price
+      end
+    else
+      0.0
+    end
   end
 
   def log_params

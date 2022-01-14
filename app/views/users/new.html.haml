@@ -1,3 +1,36 @@
-%h1 Admin Create New User?
+- if user_signed_in? && current_user.user_type == "Admin"
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'View All Accounts', accounts_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
+  .div.account-welcome-container
+    %h1.account-header= "Create new buyer"
+  
 
-= render 'form'
+  = render 'form'
+
+
+- elsif user_signed_in? && current_user.user_type == "Buyer"
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Profile', account_path(current_user.account.id)
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Logs', logs_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
+  .div.account-edit-container
+    %h1.account-header-edit= "Hello #{current_user.username}!"
+    %p.account-sub-edit= "You don't have access to this feature"   

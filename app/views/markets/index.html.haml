@@ -1,32 +1,32 @@
-.container
-  - if user_signed_in?
-    .div.main-header
-      .div.logo
-        =image_tag "logo/logo.png", width: "auto", height: "120px" 
-      .span.nav-bar-link
-        =link_to 'Home', root_path
-      .span.nav-bar-link
-        =link_to 'Wallet', wallets_path
-      .span.nav-bar-link
-        =link_to 'Portfolio', portfolios_path
-      .span.nav-bar-link
-        =link_to 'Market', markets_path
-      .span.nav-bar-link
-        =link_to 'Log Out', destroy_user_session_path, method: :delete
+- if user_signed_in?
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Profile', account_path(current_user.account.id)
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Logs', logs_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
-    .div.market-welcome-container
-      %h1.market-header= "Hello, #{current_user.username}!"
-      %p.market-sub STOCK MARKET
+  .div.market-welcome-container
+    %h1.market-header= "Hello, #{current_user.username}!"
+    %p.account-sub-show Stock Market
 
     %table.all-markets-container
       %thead.market-table-header
         %th.market-header-10 Stock Name
         %th.market-header-6 Symbol
         %th.market-header-6 Volume
-        %th.market-header-6 Trades
         %th.market-header-6 Buying Price
         %th.market-header-6 Selling Price
-        %th.market-header-10 Actions
+        %th.market-header-6 Actions
       %tbody
         - @markets.each do |market|
           %tr.market-table-column
@@ -35,12 +35,10 @@
             %td.market-header-6{"data-label" => "Symbol"}
               = market.symbol
             %td.market-header-6{"data-label" => "Volume"}
-              = market.volume
-            %td.market-header-6{"data-label" => "Trades"}
-              = market.trades
+              = market.volume.round(2)
             %td.market-header-6{"data-label" => "Buying Price"}
               = "$#{market.buying_price}"
             %td.market-header-6{"data-label" => "Selling Price"}
               = "$#{market.selling_price}"
-            %td.market-header-10{"data-label" => "Actions"}
+            %td.market-header-6{"data-label" => "Actions"}
               = link_to 'View', new_market_log_path(market.id)

@@ -1,31 +1,39 @@
-.container
-  - if user_signed_in?
-    .div.main-header 
-      .div.logo
-        =image_tag "logo/logo.png", width: "auto", height: "120px"
-      .span.nav-bar-link
-        =link_to 'Home', root_path
-      .span.nav-bar-link
-        =link_to 'Wallet', wallets_path
-      .span.nav-bar-link
-        =link_to 'Portfolio', portfolios_path
-      .span.nav-bar-link
-        =link_to 'Market', markets_path
-      .span.nav-bar-link
-        =link_to 'Log Out', destroy_user_session_path, method: :delete
+- if user_signed_in?
+  .div.main-header 
+    .div.logo
+      =image_tag "logo/logo.png", width: "auto", height: "120px"
+    .span.nav-bar-link
+      =link_to 'Home', root_path
+    .span.nav-bar-link
+      =link_to 'Profile', account_path(current_user.account.id)
+    .span.nav-bar-link
+      =link_to 'Portfolio', portfolios_path
+    .span.nav-bar-link
+      =link_to 'Market', markets_path
+    .span.nav-bar-link
+      =link_to 'Logs', logs_path
+    .span.nav-bar-button-home
+      =link_to 'Log Out', destroy_user_session_path, method: :delete
 
     .div.market-welcome-container
       %h1.market-header= "Hello, #{current_user.username}!"
-      %p.market-sub Here's your portfolio.
-      %p.market-sub= "Wallet: $#{@wallet.actual_balance}"
+      -# %h1.market-header= "Hello, #{current_user.account.first_name}!"
+      %p.account-sub-show portfolio preview
+      %p.market-sub= "Wallet balance: #{number_to_currency(@wallet.actual_balance, precision: 2, delimiter: ",")}"
+      - @owned = get_owned_stocks(@logs)
+      - @revenue = 0
+      - unless @owned.empty?
+        - @owned.each do |stock|
+          - @revenue = @revenue + stock[:revenue]
+      %p.market-sub="Revenue: #{number_to_currency(@revenue, precision: 2, delimiter: ",")}"
 
-    %table.all-markets-container
+    %table.all-portfolios-container
       %thead.market-table-header
         %th.portfolio-header-10 Stock Name
         %th.portfolio-header-6 Symbol
         %th.portfolio-header-6 Owned Units
-        %th.portfolio-header-6 Revenue
-        %th.portfolio-header-6 Actions
+        %th.portfolio-header-6 Market Value
+        %th.portfolio-header-6 Action 
       %tbody
         - get_owned_stocks(@logs).each do |stock|
           %tr.market-table-column
@@ -34,12 +42,9 @@
             %td.portfolio-header-6{"data-label" => "Symbol"}
               = stock[:symbol]
             %td.portfolio-header-6{"data-label" => "Owned Units"}
-              = stock[:units]
+              = "%.2f" % stock[:units]
             %td.portfolio-header-6{"data-label" => "Revenue"}
               = number_to_currency(stock[:revenue], precision: 2, delimiter: ",")
               
             %td.portfolio-header-6{"data-label" => "Actions"}
               = link_to 'View', new_market_log_path(stock[:market_id])
-  
-  .p.sub-button
-    = link_to 'Add Portfolio', new_portfolio_path

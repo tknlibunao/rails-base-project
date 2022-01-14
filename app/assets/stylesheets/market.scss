@@ -33,7 +33,7 @@
   width: 90vw;
   margin: 0;
   position: absolute;
-  top: 350px;
+  top: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@
 .market-table-header {
   background-color: $dark-blue;
   color: $lighter-grey;
-  width: 852px;
+  width: auto;
   display: flex;
   justify-content: space-around;
   overflow: hidden;
@@ -64,6 +64,7 @@
   width: 200px;
   text-align: center;
   padding: 10px;
+  text-transform: uppercase;
 }
 
 .market-table-column {
@@ -72,4 +73,3 @@
   vertical-align: middle;
   font-size: smaller;
 }
-

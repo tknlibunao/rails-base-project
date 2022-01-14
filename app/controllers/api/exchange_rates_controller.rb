@@ -5,5 +5,10 @@ module Api
 
       render json: latest
     end
+    def historical
+      historical = ExchangeRate::Client.historical
+
+      render json: historical
+    end
   end
 end

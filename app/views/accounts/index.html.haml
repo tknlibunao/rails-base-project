@@ -4,7 +4,7 @@
       =image_tag "logo/logo.png", width: "auto", height: "120px" 
     .span.nav-bar-link
       =link_to 'Home', root_path
-    .span.nav-bar-link
+    .span.nav-bar-button-home
       =link_to 'Log Out', destroy_user_session_path, method: :delete
 
   .div.account-welcome-container
@@ -23,7 +23,7 @@
       %th.account-header-18 Address
       %th.account-header-6 User Type
       %th.account-header-6 Verified
-      %th.account-header-6 Verified at
+      -# %th.account-header-6 Verified at
       %th.account-header-10 Actions 
     %tbody
       - @accounts.each do |account|
@@ -44,14 +44,14 @@
             = account.user.user_type
           %td.account-header-6{"data-label" => "Verified"}
             = account.verified
-          %td.account-header-6{"data-label" => "Verified_at"}
-            = account.verified_at
+          -# %td.account-header-6{"data-label" => "Verified_at"}
+          -#   = account.verified_at
           %td.account-header-10{"data-label" => "Actions"}  
             = link_to "View", account_path(account.id)
             = link_to "Edit", edit_account_path(account.id)
             = link_to "Delete", account_path(account.id), method: :delete, data: {confirm: "Are you sure?"}
   .div.account-button
-    =link_to "Add New User", new_user_path
+    =link_to "Add New Buyer", new_user_path
 
 - elsif user_signed_in? && current_user.user_type == "Buyer"
   .div.main-header-home
@@ -65,7 +65,7 @@
       =link_to 'Portfolio', portfolios_path
     .span.nav-bar-link
       =link_to 'Market', markets_path
-    .span.nav-bar-link
+    .span.nav-bar-button-home
       =link_to 'Log Out', destroy_user_session_path, method: :delete
 
   .div.welcome-text-home
