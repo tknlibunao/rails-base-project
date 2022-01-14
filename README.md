@@ -134,9 +134,9 @@ ExchangeRate::Client.historical
 
 # Studio Ghibli API (Wrapper)
 
-[Studio Ghibli API](https://ghibliapi.herokuapp.com/) is a publc API created by Studio Ghibli to give users access to the different information related to the worlds of Ghibli. Through this, users can easily request for the resources they need by following REST calls.
+[Studio Ghibli API](https://ghibliapi.herokuapp.com/) is a public API created to give users access to the different Studio Ghibli resources. Through this, users can easily request for the information they need by following regular REST calls.
 
-For more information, you can see the complete documentation [here](https://ghibliapi.herokuapp.com/).
+For more information, you can checkout the [main repository](https://ghibliapi.herokuapp.com/).
 
 ## Endpoints
 
@@ -145,3 +145,9 @@ For this repo, the available endpoints are:
 - [films](#films)
 - [people](#people)
 - [locations](#locations)
+
+### [Show All Films](#films)
+
+> returns information about all Studio Ghibli films
+
+`GET` /films
