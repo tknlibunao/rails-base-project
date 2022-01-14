@@ -146,21 +146,32 @@ For this repo, the available endpoints are:
 - [people](#people)
 - [locations](#locations)
 
+## Responses
+- `200`: An array of info
+- `400`: Bad Request
+- `404`: Not Found
+
+<br>
+
 ## Show All Films
 
 `GET` /films
 
 > returns information about all Studio Ghibli films
 
-### URL
+### Access via URL
 
 `/anime/ghibli/films`
 
-### Rails console command
+### Access via terminal
 
-`StudioGhibli::Client.films`
+```
+$ rails c
 
-### Sample Response
+> StudioGhibli::Client.films
+```
+
+### Sample Response (202)
 
 ```
 [
@@ -216,3 +227,110 @@ For this repo, the available endpoints are:
   }
 ]
 ```
+
+## Show All People
+
+`GET` /people
+
+> returns information about all Studio Ghibli people (human and non-)
+
+### Access via URL
+
+`/anime/ghibli/people`
+
+### Access via terminal
+
+```
+$ rails c
+
+> StudioGhibli::Client.people
+```
+
+### Sample Response (202)
+
+```
+[
+  {
+    "id": "ba924631-068e-4436-b6de-f3283fa848f0",
+    "name": "Ashitaka",
+    "gender": "male",
+    "age": "late teens",
+    "eye_color": "brown",
+    "hair_color": "brown",
+    "films": [
+      "https://ghibliapi.herokuapp.com/films/030555b3-4c92-4fce-93fb-e70c3ae3df8b"
+    ],
+    "species": "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2",
+    "url": "https://ghibliapi.herokuapp.com/people/ba924631-068e-4436-b6de-f3283fa848f0"
+  },
+  {
+    "id": "030555b3-4c92-4fce-93fb-e70c3ae3df8b",
+    "name": "Yakul",
+    "age": "Unknown",
+    "gender": "male",
+    "eye_color": "Grey",
+    "hair_color": "Brown",
+    "films": [
+      "https://ghibliapi.herokuapp.com/films/0440483e-ca0e-4120-8c50-4c8cd9b965d6"
+    ],
+    "species": "https://ghibliapi.herokuapp.com/species/6bc92fdd-b0f4-4286-ad71-1f99fb4a0d1e",
+    "url": "https://ghibliapi.herokuapp.com/people/030555b3-4c92-4fce-93fb-e70c3ae3df8b"
+  }
+]
+```
+
+## Show All Locations
+
+`GET` /locations
+
+> returns information about all Studio Ghibli locations
+
+### Access via URL
+
+`/anime/ghibli/locations`
+
+### Access via terminal
+
+```
+$ rails c
+
+> StudioGhibli::Client.locations
+```
+
+### Sample Response (202)
+
+```
+[
+  {
+    "id": "11014596-71b0-4b3e-b8c0-1c4b15f28b9a",
+    "name": "Irontown",
+    "climate": "Continental",
+    "terrain": "Mountain",
+    "surface_water": "40",
+    "residents": [
+      "https://ghibliapi.herokuapp.com/people/ba924631-068e-4436-b6de-f3283fa848f0",
+      "https://ghibliapi.herokuapp.com/people/030555b3-4c92-4fce-93fb-e70c3ae3df8b"
+    ],
+    "films": [
+      "https://ghibliapi.herokuapp.com/films/0440483e-ca0e-4120-8c50-4c8cd9b965d6"
+    ],
+    "url": "https://ghibliapi.herokuapp.com/locations/11014596-71b0-4b3e-b8c0-1c4b15f28b9a"
+  },
+  {
+    "id": "11014596-71b0-4b3e-b8c0-1c4b15f28b9a",
+    "name": "Gutiokipanja",
+    "climate": "Continental",
+    "terrain": "Hill",
+    "surface_water": "50",
+    "residents": [
+      "https://ghibliapi.herokuapp.com/people/ba924631-068e-4436-b6de-f3283fa848f0",
+      "https://ghibliapi.herokuapp.com/people/030555b3-4c92-4fce-93fb-e70c3ae3df8b"
+    ],
+    "films": [
+      "https://ghibliapi.herokuapp.com/films/0440483e-ca0e-4120-8c50-4c8cd9b965d6"
+    ],
+    "url": "https://ghibliapi.herokuapp.com/locations/11014596-71b0-4b3e-b8c0-1c4b15f28b9a"
+  }
+]
+```
+
