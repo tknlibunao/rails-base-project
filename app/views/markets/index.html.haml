@@ -35,7 +35,7 @@
             %td.market-header-6{"data-label" => "Symbol"}
               = market.symbol
             %td.market-header-6{"data-label" => "Volume"}
-              = market.volume
+              = market.volume.round(2)
             %td.market-header-6{"data-label" => "Buying Price"}
               = "$#{market.buying_price}"
             %td.market-header-6{"data-label" => "Selling Price"}
